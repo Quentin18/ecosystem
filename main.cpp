@@ -1,8 +1,13 @@
 #include <SFML/Graphics.hpp>
+#include "constants.hpp"
+#include "cell.hpp"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1000, 800), "Ecosystem");
+    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
+
+    // Init a cell
+    Cell c;
 
     while (window.isOpen())
     {
@@ -14,6 +19,8 @@ int main()
         }
 
         window.clear();
+        // Draw cell
+        window.draw(c);
         window.display();
     }
 
