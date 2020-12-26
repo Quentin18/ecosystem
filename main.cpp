@@ -24,6 +24,7 @@ int main()
         // Draw cells
         for (size_t i = 0; i < NB_CELLS; i++)
         {
+            cells[i].update();
             window.draw(cells[i]);
         }        
         window.display();

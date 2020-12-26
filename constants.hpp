@@ -6,5 +6,5 @@ const char WINDOW_TITLE[] = "Ecosystem";
 
 const float CELL_MIN_RADIUS = 5;
 const float CELL_MAX_RADIUS = 50;
-const float CELL_MIN_SPEED = 10;
-const float CELL_MAX_SPEED = 50;
+const float CELL_MIN_SPEED = 1;
+const float CELL_MAX_SPEED = 5;

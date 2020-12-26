@@ -1,4 +1,5 @@
 #include <random>
+#include <experimental/random>
 
 #include "cell.hpp"
 #include "constants.hpp"
@@ -28,4 +29,19 @@ Cell::Cell()
 
 Cell::~Cell() {}
 
-void Cell::update() {}
+void Cell::update()
+{
+    int dx = std::experimental::randint(-1, 1);
+    int dy = std::experimental::randint(-1, 1);
+    x += dx * speed;
+    y += dy * speed;
+    if (x < 0 || x > WINDOW_WIDTH)
+    {
+        x -= 2 * dx * speed;
+    }
+    if (y < 0 || y > WINDOW_HEIGHT)
+    {
+        y -= 2 * dy * speed;
+    }
+    this->setPosition(x, y);
+}
