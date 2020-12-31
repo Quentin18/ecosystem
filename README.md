@@ -25,8 +25,11 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 **TBD**
 
 ## Références
-[The Nature of Code - Daniel Schiffman](https://natureofcode.com/book/chapter-9-the-evolution-of-code/#913-ecosystem-simulation)
-[Coding Adventure: Simulating an Ecosystem](https://www.youtube.com/watch?v=r_It_X7v-1E)
+- [The Nature of Code - Daniel Schiffman](https://natureofcode.com/book/chapter-9-the-evolution-of-code/#913-ecosystem-simulation)
+- [Coding Adventure: Simulating an Ecosystem](https://www.youtube.com/watch?v=r_It_X7v-1E)
+- [Simulation de la sélection naturelle](https://www.youtube.com/watch?v=0ZGbIKd0XrM)
+- [SFML Documentation](https://www.sfml-dev.org/documentation/2.5.1/index.php)
+- [Perlin Noise](https://en.wikipedia.org/wiki/Perlin_noise)
 
 ## Auteurs
 
