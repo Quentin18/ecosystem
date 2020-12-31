@@ -30,7 +30,7 @@ Animal::Animal()
     // Init circle
     this->setOrigin(radius, radius);
     this->setRadius(radius);
-    this->setFillColor(sf::Color::White);
+    this->setFillColor(ANIMAL_DEFAULT_COLOR);
     this->setPosition(x, y);
 }
 

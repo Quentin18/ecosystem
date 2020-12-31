@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "constants.hpp"
-#include "animal.hpp"
+#include "rabbit.hpp"
 
 int main()
 {
@@ -8,11 +8,11 @@ int main()
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
     window.setFramerateLimit(FRAMERATE_LIMIT);
 
-    // Nb animals to start
-    const int NB_ANIMALS = 30;
+    // Nb rabbits to start
+    const int NB_RABBITS = 30;
 
     // Init animals
-    Animal* animals = new Animal[NB_ANIMALS];
+    Rabbit* rabbits = new Rabbit[NB_RABBITS];
 
     // Main loop
     while (window.isOpen())
@@ -25,16 +25,16 @@ int main()
         }
 
         window.clear(BG_COLOR);
-        // Draw Animals
-        for (size_t i = 0; i < NB_ANIMALS; i++)
+        // Draw rabbits
+        for (size_t i = 0; i < NB_RABBITS; i++)
         {
-            animals[i].update();
-            window.draw(animals[i]);
-        }        
+            rabbits[i].update();
+            window.draw(rabbits[i]);
+        }
         window.display();
     }
 
-    delete[] animals;
+    delete[] rabbits;
 
     return 0;
 }

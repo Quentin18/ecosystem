@@ -14,3 +14,5 @@ const float ANIMAL_MAX_RADIUS = 10;
 
 // Colors
 const sf::Color BG_COLOR = sf::Color::Green;
+const sf::Color ANIMAL_DEFAULT_COLOR = sf::Color::Black;
+const sf::Color RABBIT_COLOR = sf::Color::White;
