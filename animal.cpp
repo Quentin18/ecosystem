@@ -1,7 +1,7 @@
 #include <random>
 #include <experimental/random>
 
-#include "cell.hpp"
+#include "animal.hpp"
 #include "constants.hpp"
 #include "perlin.hpp"
 
@@ -9,17 +9,17 @@
  * 
  * Inspired by https://processing.org/reference/map_.html
  */
-float Cell::map(float value, float start1, float stop1, float start2, float stop2)
+float Animal::map(float value, float start1, float stop1, float start2, float stop2)
 {
     return start2 + (stop2 - start2) * (value - start1) / (stop1 - start1);
 }
 
-Cell::Cell()
+Animal::Animal()
 {
     // Generators
     std::random_device rd;
     std::default_random_engine eng(rd());
-    std::uniform_real_distribution<float> dist_radius(CELL_MIN_RADIUS, CELL_MAX_RADIUS);
+    std::uniform_real_distribution<float> dist_radius(ANIMAL_MIN_RADIUS, ANIMAL_MAX_RADIUS);
     std::uniform_real_distribution<float> dist_t(0, 10000);
 
     // Set variables
@@ -34,9 +34,9 @@ Cell::Cell()
     this->setPosition(x, y);
 }
 
-Cell::~Cell() {}
+Animal::~Animal() {}
 
-void Cell::update()
+void Animal::update()
 {
     x = map(Perlin::noise(tx), -1, 1, 0, WINDOW_WIDTH);
     y = map(Perlin::noise(ty), -1, 1, 0, WINDOW_HEIGHT);

@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-class Cell : public sf::CircleShape
+class Animal : public sf::CircleShape
 {
 private:
     float radius;
@@ -10,7 +10,7 @@ private:
     float tx, ty;   // time variables
     static float map(float value, float start1, float stop1, float start2, float stop2);
 public:
-    Cell();
-    ~Cell();
+    Animal();
+    ~Animal();
     void update();
 };

@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "constants.hpp"
-#include "cell.hpp"
+#include "animal.hpp"
 
 int main()
 {
@@ -8,11 +8,11 @@ int main()
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
     window.setFramerateLimit(FRAMERATE_LIMIT);
 
-    // Nb cells to start
-    const int NB_CELLS = 30;
+    // Nb animals to start
+    const int NB_ANIMALS = 30;
 
-    // Init cells
-    Cell* cells = new Cell[NB_CELLS];
+    // Init animals
+    Animal* animals = new Animal[NB_ANIMALS];
 
     // Main loop
     while (window.isOpen())
@@ -25,16 +25,16 @@ int main()
         }
 
         window.clear(BG_COLOR);
-        // Draw cells
-        for (size_t i = 0; i < NB_CELLS; i++)
+        // Draw Animals
+        for (size_t i = 0; i < NB_ANIMALS; i++)
         {
-            cells[i].update();
-            window.draw(cells[i]);
+            animals[i].update();
+            window.draw(animals[i]);
         }        
         window.display();
     }
 
-    delete[] cells;
+    delete[] animals;
 
     return 0;
 }
