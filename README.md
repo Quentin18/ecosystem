@@ -26,6 +26,7 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 
 ## Références
 [The Nature of Code - Daniel Schiffman](https://natureofcode.com/book/chapter-9-the-evolution-of-code/#913-ecosystem-simulation)
+[Coding Adventure: Simulating an Ecosystem](https://www.youtube.com/watch?v=r_It_X7v-1E)
 
 ## Auteurs
 
