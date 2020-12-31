@@ -6,9 +6,9 @@ class Cell : public sf::CircleShape
 {
 private:
     float radius;
-    float speed;
-    float x;
-    float y;
+    float x, y;
+    float tx, ty;   // time variables
+    static float map(float value, float start1, float stop1, float start2, float stop2);
 public:
     Cell();
     ~Cell();

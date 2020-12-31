@@ -4,13 +4,17 @@
 
 int main()
 {
+    // Init window
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
+    window.setFramerateLimit(FRAMERATE_LIMIT);
 
+    // Nb cells to start
     const int NB_CELLS = 30;
 
     // Init cells
     Cell* cells = new Cell[NB_CELLS];
 
+    // Main loop
     while (window.isOpen())
     {
         sf::Event event;
