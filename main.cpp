@@ -24,7 +24,7 @@ int main()
                 window.close();
         }
 
-        window.clear();
+        window.clear(BG_COLOR);
         // Draw cells
         for (size_t i = 0; i < NB_CELLS; i++)
         {
