@@ -22,9 +22,33 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 
 ## Fonctionnement
 
-**TBD**
+- Les animaux sont représentés par des cercles. Au début de la simulation, des lapins et des renards sont placés aléatoirement sur la fenêtre. Le rayon de leur cercle est aléatoire, choisi dans une plage de valeurs. Les animaux ont une quantité définie de points de vie (**à définir**).
+
+- De plus, une certaine quantité de nourriture est répartie sur la fenêtre. La nourriture est aussi représentée par un cercle.
+
+- À chaque regénération de la fenêtre (voir *framerate*), les animaux se déplacent pseudo-aléatoirement en utilisant le *Perlin noise*. Leurs points de vie diminuent d'une quantité définie (**à définir**). Voici les interactions entre les entités :
+
+    * **Quand un lapin rencontre de la nourriture**, le lapin mange la nourriture. La nourriture est regénérée à un autre endroit de la fenêtre et le lapin gagne une certaine quantité de points de vie (**à définir**).
+    * **Quand un renard rencontre un lapin**, le renard mange le lapin avec une certaine probabilité (**à définir**). Le renard gagne alors une quantité de points de vie, et le lapin disparaît.
+    * **Quand un lapin rencontre un autre lapin**, un nouveau lapin naît avec une certaine probabilité (**à définir**).
+    * **Quand un renard rencontre un autre renard**, un nouveau renard naît avec une certaine probabilité (**à définir**).
+    * **Quand un animal n'a plus de points de vie**, il meurt et disparaît de la fenêtre.
+
+## Tâches
+
+- [x] Créer la fenêtre de simulation
+- [x] Définir les classes pour les animaux
+- [x] Gérer le déplacement des animaux
+- [ ] Définir la classe pour la nourriture
+- [ ] Gérer les interactions entre les entités
+- [ ] Ajouter sur la fenêtre les statistiques de la simulation (nombre d'animaux, timer)
+- [ ] Gérer la customisation de la simulation
+- [ ] Pouvoir faire pause, accélérer, ralentir la simulation
+- [ ] Pouvoir générer un graphe de la simulation avec le nombre d'animaux en fonction du temps
+- [ ] Pouvoir sauvegarder la simulation dans un fichier `.mp4`
 
 ## Références
+
 - [The Nature of Code - Daniel Schiffman](https://natureofcode.com/book/chapter-9-the-evolution-of-code/#913-ecosystem-simulation)
 - [Coding Adventure: Simulating an Ecosystem](https://www.youtube.com/watch?v=r_It_X7v-1E)
 - [Simulation de la sélection naturelle](https://www.youtube.com/watch?v=0ZGbIKd0XrM)
