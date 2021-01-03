@@ -9,6 +9,8 @@ const char WINDOW_TITLE[] = "Ecosystem";
 const int FRAMERATE_LIMIT = 60;
 
 // Animals
+const int NB_RABBITS_START = 30;
+const int NB_FOXES_START = 3;
 const float ANIMAL_MIN_RADIUS = 5;
 const float ANIMAL_MAX_RADIUS = 10;
 
