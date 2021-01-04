@@ -14,8 +14,9 @@ const sf::Vector2f TEXT_POS(5, 5);
 // Animals
 const unsigned int NB_RABBITS_START = 30;
 const unsigned int NB_FOXES_START = 3;
-const float ANIMAL_MIN_RADIUS = 5;
-const float ANIMAL_MAX_RADIUS = 10;
+const float RABBIT_RADIUS = 8;
+const float FOXES_RADIUS = 12;
+const float ANIMAL_DEFAULT_RADIUS = 10;
 const unsigned int ANIMAL_MAX_HP = 1000;
 
 // Food

@@ -14,16 +14,14 @@ float Animal::map(float value, float start1, float stop1, float start2, float st
     return start2 + (stop2 - start2) * (value - start1) / (stop1 - start1);
 }
 
-Animal::Animal() : hp(ANIMAL_MAX_HP)
+Animal::Animal() : radius(ANIMAL_DEFAULT_RADIUS), hp(ANIMAL_MAX_HP)
 {
     // Generators
     std::random_device rd;
     std::default_random_engine eng(rd());
-    std::uniform_real_distribution<float> dist_radius(ANIMAL_MIN_RADIUS, ANIMAL_MAX_RADIUS);
     std::uniform_real_distribution<float> dist_t(0, 10000);
 
     // Set variables
-    radius = dist_radius(eng);
     tx = dist_t(eng);
     ty = dist_t(eng);
 

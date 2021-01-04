@@ -3,6 +3,7 @@
 
 Rabbit::Rabbit()
 {
+    this->setRadius(RABBIT_RADIUS);
     this->setFillColor(RABBIT_COLOR);
 }
 

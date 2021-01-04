@@ -3,6 +3,7 @@
 
 Fox::Fox()
 {
+    this->setRadius(FOXES_RADIUS);
     this->setFillColor(FOX_COLOR);
 }
 
