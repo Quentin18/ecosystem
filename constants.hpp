@@ -18,9 +18,13 @@ const float ANIMAL_MIN_RADIUS = 5;
 const float ANIMAL_MAX_RADIUS = 10;
 const unsigned int ANIMAL_MAX_HP = 1000;
 
+// Food
+const unsigned int FOOD_RADIUS = 2;
+
 // Colors
 const sf::Color BG_COLOR(34, 139, 34);
 const sf::Color TEXT_COLOR = sf::Color::Black;
 const sf::Color ANIMAL_DEFAULT_COLOR = sf::Color::Black;
 const sf::Color RABBIT_COLOR(192, 192, 192, 220);
 const sf::Color FOX_COLOR(210, 105, 30, 220);
+const sf::Color FOOD_COLOR(255, 165, 0);
