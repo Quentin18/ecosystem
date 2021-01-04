@@ -8,6 +8,8 @@ Food::Food()
     this->setOrigin(FOOD_RADIUS, FOOD_RADIUS);
     this->setRadius(FOOD_RADIUS);
     this->setFillColor(FOOD_COLOR);
+    this->setOutlineColor(CIRCLE_OUTLINE_COLOR);
+    this->setOutlineThickness(CIRCLE_THICKNESS);
     move();
 }
 

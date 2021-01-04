@@ -10,6 +10,7 @@ const unsigned int FRAMERATE_LIMIT = 60;
 const std::string FONT_PATH = "ComicRelief.ttf";
 const unsigned int TEXT_SIZE = 24;
 const sf::Vector2f TEXT_POS(5, 5);
+const float CIRCLE_THICKNESS = 1;
 
 // Animals
 const unsigned int NB_RABBITS_START = 30;
@@ -30,3 +31,4 @@ const sf::Color ANIMAL_DEFAULT_COLOR = sf::Color::Black;
 const sf::Color RABBIT_COLOR(192, 192, 192, 220);
 const sf::Color FOX_COLOR(210, 105, 30, 220);
 const sf::Color FOOD_COLOR(255, 165, 0);
+const sf::Color CIRCLE_OUTLINE_COLOR = sf::Color::Black;

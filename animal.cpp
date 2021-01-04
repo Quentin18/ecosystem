@@ -22,6 +22,8 @@ Animal::Animal() : radius(ANIMAL_DEFAULT_RADIUS), hp(ANIMAL_MAX_HP)
     this->setOrigin(radius, radius);
     this->setRadius(radius);
     this->setFillColor(ANIMAL_DEFAULT_COLOR);
+    this->setOutlineColor(CIRCLE_OUTLINE_COLOR);
+    this->setOutlineThickness(CIRCLE_THICKNESS);
     this->setPosition(x, y);
 }
 
