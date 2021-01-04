@@ -5,6 +5,7 @@
 
 #include "rabbit.hpp"
 #include "fox.hpp"
+#include "food.hpp"
 
 class Ecosystem
 {
@@ -15,8 +16,10 @@ private:
     sf::Clock clock;
     std::vector<Rabbit> rabbits;
     std::vector<Fox> foxes;
+    std::vector<Food> foods;
     int nb_rabbits;
     int nb_foxes;
+    int nb_foods;
 public:
     Ecosystem();
     ~Ecosystem();

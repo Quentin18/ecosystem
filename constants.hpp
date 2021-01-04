@@ -19,7 +19,8 @@ const float ANIMAL_MAX_RADIUS = 10;
 const unsigned int ANIMAL_MAX_HP = 1000;
 
 // Food
-const unsigned int FOOD_RADIUS = 2;
+const unsigned int NB_FOODS = 10;
+const unsigned int FOOD_RADIUS = 4;
 
 // Colors
 const sf::Color BG_COLOR(34, 139, 34);

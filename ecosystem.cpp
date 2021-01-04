@@ -19,7 +19,7 @@ Ecosystem::Ecosystem() : nb_rabbits(NB_RABBITS_START), nb_foxes(NB_FOXES_START)
     text.setCharacterSize(TEXT_SIZE);
     text.setFillColor(TEXT_COLOR);
     text.setPosition(TEXT_POS);
-    
+
     // Create animals
     for (int i = 0; i < nb_rabbits; i++)
     {
@@ -28,6 +28,11 @@ Ecosystem::Ecosystem() : nb_rabbits(NB_RABBITS_START), nb_foxes(NB_FOXES_START)
     for (int i = 0; i < nb_foxes; i++)
     {
         foxes.emplace_back();
+    }
+    // Create foods
+    for (unsigned int i = 0; i < NB_FOODS; i++)
+    {
+        foods.emplace_back();
     }
 }
 
@@ -40,6 +45,7 @@ void Ecosystem::run()
     // Define iterators
     std::vector<Rabbit>::iterator it_rabbits;
     std::vector<Fox>::iterator it_foxes;
+    std::vector<Food>::iterator it_foods;
 
     window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
     window.setFramerateLimit(FRAMERATE_LIMIT);
@@ -88,6 +94,11 @@ void Ecosystem::run()
                 foxes.erase(it_foxes);
                 nb_foxes--;
             }   
+        }
+        // Draw foods
+        for (it_foods = foods.begin(); it_foods < foods.end(); ++it_foods)
+        {
+            window.draw(*it_foods);
         }
         // Draw text
         ss.str("");
