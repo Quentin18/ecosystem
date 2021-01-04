@@ -16,6 +16,7 @@ const unsigned int NB_RABBITS_START = 30;
 const unsigned int NB_FOXES_START = 3;
 const float ANIMAL_MIN_RADIUS = 5;
 const float ANIMAL_MAX_RADIUS = 10;
+const unsigned int ANIMAL_MAX_HP = 1000;
 
 // Colors
 const sf::Color BG_COLOR(34, 139, 34);

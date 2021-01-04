@@ -14,7 +14,7 @@ float Animal::map(float value, float start1, float stop1, float start2, float st
     return start2 + (stop2 - start2) * (value - start1) / (stop1 - start1);
 }
 
-Animal::Animal()
+Animal::Animal() : hp(ANIMAL_MAX_HP)
 {
     // Generators
     std::random_device rd;
@@ -43,4 +43,10 @@ void Animal::update()
     this->setPosition(x, y);
     tx += 0.01;
     ty += 0.01;
+    hp--;
+}
+
+bool Animal::is_dead() const
+{
+    return hp <= 0;
 }

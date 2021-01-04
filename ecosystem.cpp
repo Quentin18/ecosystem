@@ -37,6 +37,9 @@ void Ecosystem::run()
 {
     // Define stringstream for text
     std::stringstream ss;
+    // Define iterators
+    std::vector<Rabbit>::iterator it_rabbits;
+    std::vector<Fox>::iterator it_foxes;
 
     window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
     window.setFramerateLimit(FRAMERATE_LIMIT);
@@ -52,17 +55,39 @@ void Ecosystem::run()
         }
 
         window.clear(BG_COLOR);
-        // Draw rabbits
-        for (int i = 0; i < nb_rabbits; i++)
+        // Update and draw rabbits
+        it_rabbits = rabbits.begin();
+        while (it_rabbits != rabbits.end())
         {
-            rabbits[i].update();
-            window.draw(rabbits[i]);
+            it_rabbits->update();
+            if (!it_rabbits->is_dead())
+            {
+                window.draw(*it_rabbits);
+                it_rabbits++;
+            }
+            else
+            {
+                // Remove rabbit
+                rabbits.erase(it_rabbits);
+                nb_rabbits--;
+            }   
         }
-        // Draw foxes
-        for (int i = 0; i < nb_foxes; i++)
+        // Update and draw foxes
+        it_foxes = foxes.begin();
+        while (it_foxes != foxes.end())
         {
-            foxes[i].update();
-            window.draw(foxes[i]);
+            it_foxes->update();
+            if (!it_foxes->is_dead())
+            {
+                window.draw(*it_foxes);
+                it_foxes++;
+            }
+            else
+            {
+                // Remove fox
+                foxes.erase(it_foxes);
+                nb_foxes--;
+            }   
         }
         // Draw text
         ss.str("");
