@@ -20,6 +20,9 @@ private:
     int nb_rabbits;
     int nb_foxes;
     int nb_foods;
+    void initText();
+    void initAnimals();
+    void initFoods();
 public:
     Ecosystem();
     ~Ecosystem();

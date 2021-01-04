@@ -5,22 +5,21 @@
 #include "ecosystem.hpp"
 #include "constants.hpp"
 
-Ecosystem::Ecosystem() : nb_rabbits(NB_RABBITS_START), nb_foxes(NB_FOXES_START)
+void Ecosystem::initText()
 {
-    // Init font
     if (!font.loadFromFile(FONT_PATH))
     {
         std::cerr << "Error: can't load " << FONT_PATH << std::endl;
         exit(EXIT_FAILURE);
     }
-
-    // Init text
     text.setFont(font);
     text.setCharacterSize(TEXT_SIZE);
     text.setFillColor(TEXT_COLOR);
     text.setPosition(TEXT_POS);
+}
 
-    // Create animals
+void Ecosystem::initAnimals()
+{
     for (int i = 0; i < nb_rabbits; i++)
     {
         rabbits.emplace_back();
@@ -29,11 +28,21 @@ Ecosystem::Ecosystem() : nb_rabbits(NB_RABBITS_START), nb_foxes(NB_FOXES_START)
     {
         foxes.emplace_back();
     }
-    // Create foods
+}
+
+void Ecosystem::initFoods()
+{
     for (unsigned int i = 0; i < NB_FOODS; i++)
     {
         foods.emplace_back();
     }
+}
+
+Ecosystem::Ecosystem() : nb_rabbits(NB_RABBITS_START), nb_foxes(NB_FOXES_START)
+{
+    initText();
+    initAnimals();
+    initFoods();
 }
 
 Ecosystem::~Ecosystem() {}
