@@ -1,9 +1,7 @@
-#include <random>
-#include <experimental/random>
-
 #include "animal.hpp"
 #include "constants.hpp"
 #include "perlin.hpp"
+#include "distributions.hpp"
 
 /** Re-maps a number from one range to another.
  * 
@@ -16,14 +14,9 @@ float Animal::map(float value, float start1, float stop1, float start2, float st
 
 Animal::Animal() : radius(ANIMAL_DEFAULT_RADIUS), hp(ANIMAL_MAX_HP)
 {
-    // Generators
-    std::random_device rd;
-    std::default_random_engine eng(rd());
-    std::uniform_real_distribution<float> dist_t(0, 10000);
-
     // Set variables
-    tx = dist_t(eng);
-    ty = dist_t(eng);
+    tx = TIME_DISTRIBUTION(RANDOM_ENGINE);
+    ty = TIME_DISTRIBUTION(RANDOM_ENGINE);
 
     // Init circle
     this->setOrigin(radius, radius);

@@ -1,7 +1,6 @@
-#include <random>
-
 #include "food.hpp"
 #include "constants.hpp"
+#include "distributions.hpp"
 
 Food::Food()
 {
@@ -16,9 +15,5 @@ Food::~Food() {}
 
 void Food::move()
 {
-    std::random_device rd;
-    std::default_random_engine eng(rd());
-    std::uniform_real_distribution<float> dist_x(0, WINDOW_WIDTH);
-    std::uniform_real_distribution<float> dist_y(0, WINDOW_HEIGHT);
-    this->setPosition(dist_x(eng), dist_y(eng));
+    this->setPosition(X_DISTRIBUTION(RANDOM_ENGINE), Y_DISTRIBUTION(RANDOM_ENGINE));
 }
