@@ -39,13 +39,12 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 - [x] Créer la fenêtre de simulation
 - [x] Définir les classes pour les animaux
 - [x] Gérer le déplacement des animaux
-- [ ] Définir la classe pour la nourriture
+- [x] Définir la classe pour la nourriture
 - [ ] Gérer les interactions entre les entités
 - [x] Ajouter sur la fenêtre les statistiques de la simulation (nombre d'animaux, timer)
 - [ ] Gérer la customisation de la simulation
 - [ ] Pouvoir faire pause, accélérer, ralentir la simulation
 - [ ] Pouvoir générer un graphe de la simulation avec le nombre d'animaux en fonction du temps
-- [ ] Pouvoir sauvegarder la simulation dans un fichier `.mp4`
 
 ## Références
 
