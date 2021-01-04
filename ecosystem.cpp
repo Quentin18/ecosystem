@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 
 #include "ecosystem.hpp"
 #include "constants.hpp"
@@ -14,10 +15,10 @@ Ecosystem::Ecosystem() : nb_rabbits(NB_RABBITS_START), nb_foxes(NB_FOXES_START)
     }
 
     // Init text
-    animals_text.setFont(font);
-    animals_text.setCharacterSize(TEXT_SIZE);
-    animals_text.setFillColor(TEXT_COLOR);
-    animals_text.setPosition(TEXT_POS);
+    text.setFont(font);
+    text.setCharacterSize(TEXT_SIZE);
+    text.setFillColor(TEXT_COLOR);
+    text.setPosition(TEXT_POS);
     
     // Create animals
     for (int i = 0; i < nb_rabbits; i++)
@@ -34,6 +35,9 @@ Ecosystem::~Ecosystem() {}
 
 void Ecosystem::run()
 {
+    // Define stringstream for text
+    std::stringstream ss;
+
     window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
     window.setFramerateLimit(FRAMERATE_LIMIT);
 
@@ -61,11 +65,13 @@ void Ecosystem::run()
             window.draw(foxes[i]);
         }
         // Draw text
-        animals_text.setString(
-            "Rabbits: " + std::to_string(nb_rabbits) +
-            "\nFoxes: " + std::to_string(nb_foxes)
-        );
-        window.draw(animals_text);
+        ss.str("");
+        ss.clear();
+        ss << "Time: " << clock.getElapsedTime().asSeconds() << "\n"
+           << "Rabbits: " << nb_rabbits << "\n"
+           << "Foxes: " << nb_foxes << "\n";
+        text.setString(ss.str());
+        window.draw(text);
         window.display();
     }
 }

@@ -11,7 +11,8 @@ class Ecosystem
 private:
     sf::RenderWindow window;
     sf::Font font;
-    sf::Text animals_text;
+    sf::Text text;
+    sf::Clock clock;
     std::vector<Rabbit> rabbits;
     std::vector<Fox> foxes;
     int nb_rabbits;
