@@ -7,4 +7,5 @@ class Fox : public Animal
 public:
     Fox();
     ~Fox();
+    void update();
 };

@@ -8,3 +8,9 @@ Rabbit::Rabbit()
 }
 
 Rabbit::~Rabbit() {}
+
+void Rabbit::update()
+{
+    Animal::update();
+    // TODO to complete
+}

@@ -8,3 +8,9 @@ Fox::Fox()
 }
 
 Fox::~Fox() {}
+
+void Fox::update()
+{
+    Animal::update();
+    // TODO to complete
+}
