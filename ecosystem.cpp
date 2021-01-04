@@ -47,15 +47,76 @@ Ecosystem::Ecosystem() : nb_rabbits(NB_RABBITS_START), nb_foxes(NB_FOXES_START)
 
 Ecosystem::~Ecosystem() {}
 
-void Ecosystem::run()
+void Ecosystem::drawText()
 {
-    // Define stringstream for text
     std::stringstream ss;
-    // Define iterators
+    ss << "Time: " << clock.getElapsedTime().asSeconds() << "\n"
+        << "Rabbits: " << nb_rabbits << "\n"
+        << "Foxes: " << nb_foxes << "\n";
+    text.setString(ss.str());
+    window.draw(text);
+}
+
+void Ecosystem::drawAnimals()
+{
     std::vector<Rabbit>::iterator it_rabbits;
     std::vector<Fox>::iterator it_foxes;
-    std::vector<Food>::iterator it_foods;
+    // Update and draw rabbits
+    it_rabbits = rabbits.begin();
+    while (it_rabbits != rabbits.end())
+    {
+        it_rabbits->update();
+        if (!it_rabbits->is_dead())
+        {
+            window.draw(*it_rabbits);
+            it_rabbits++;
+        }
+        else
+        {
+            // Remove rabbit
+            rabbits.erase(it_rabbits);
+            nb_rabbits--;
+        }
+    }
+    // Update and draw foxes
+    it_foxes = foxes.begin();
+    while (it_foxes != foxes.end())
+    {
+        it_foxes->update();
+        if (!it_foxes->is_dead())
+        {
+            window.draw(*it_foxes);
+            it_foxes++;
+        }
+        else
+        {
+            // Remove fox
+            foxes.erase(it_foxes);
+            nb_foxes--;
+        }
+    }
+}
 
+void Ecosystem::drawFoods()
+{
+    std::vector<Food>::iterator it_foods;
+    for (it_foods = foods.begin(); it_foods < foods.end(); ++it_foods)
+    {
+        window.draw(*it_foods);
+    }
+}
+
+void Ecosystem::redraw()
+{
+    window.clear(BG_COLOR);
+    drawAnimals();
+    drawFoods();
+    drawText();
+    window.display();
+}
+
+void Ecosystem::run()
+{
     window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
     window.setFramerateLimit(FRAMERATE_LIMIT);
 
@@ -68,55 +129,6 @@ void Ecosystem::run()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
-        window.clear(BG_COLOR);
-        // Update and draw rabbits
-        it_rabbits = rabbits.begin();
-        while (it_rabbits != rabbits.end())
-        {
-            it_rabbits->update();
-            if (!it_rabbits->is_dead())
-            {
-                window.draw(*it_rabbits);
-                it_rabbits++;
-            }
-            else
-            {
-                // Remove rabbit
-                rabbits.erase(it_rabbits);
-                nb_rabbits--;
-            }   
-        }
-        // Update and draw foxes
-        it_foxes = foxes.begin();
-        while (it_foxes != foxes.end())
-        {
-            it_foxes->update();
-            if (!it_foxes->is_dead())
-            {
-                window.draw(*it_foxes);
-                it_foxes++;
-            }
-            else
-            {
-                // Remove fox
-                foxes.erase(it_foxes);
-                nb_foxes--;
-            }   
-        }
-        // Draw foods
-        for (it_foods = foods.begin(); it_foods < foods.end(); ++it_foods)
-        {
-            window.draw(*it_foods);
-        }
-        // Draw text
-        ss.str("");
-        ss.clear();
-        ss << "Time: " << clock.getElapsedTime().asSeconds() << "\n"
-           << "Rabbits: " << nb_rabbits << "\n"
-           << "Foxes: " << nb_foxes << "\n";
-        text.setString(ss.str());
-        window.draw(text);
-        window.display();
+    redraw();
     }
 }

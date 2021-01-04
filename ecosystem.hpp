@@ -23,6 +23,10 @@ private:
     void initText();
     void initAnimals();
     void initFoods();
+    void drawText();
+    void drawAnimals();
+    void drawFoods();
+    void redraw();
 public:
     Ecosystem();
     ~Ecosystem();
