@@ -29,7 +29,7 @@ Animal::Animal() : radius(ANIMAL_DEFAULT_RADIUS), hp(ANIMAL_MAX_HP)
 
 Animal::~Animal() {}
 
-void Animal::update()
+void Animal::move()
 {
     x = map(Perlin::noise(tx), -1, 1, 0, WINDOW_WIDTH);
     y = map(Perlin::noise(ty), -1, 1, 0, WINDOW_HEIGHT);
@@ -39,7 +39,7 @@ void Animal::update()
     hp--;
 }
 
-bool Animal::is_dead() const
+bool Animal::isDead() const
 {
     return hp <= 0;
 }

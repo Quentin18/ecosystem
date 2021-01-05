@@ -9,8 +9,7 @@ Rabbit::Rabbit()
 
 Rabbit::~Rabbit() {}
 
-void Rabbit::update()
+void eat(std::list<Food> *foods)
 {
-    Animal::update();
     // TODO to complete
 }

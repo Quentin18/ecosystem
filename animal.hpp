@@ -13,6 +13,6 @@ private:
 public:
     Animal();
     ~Animal();
-    void update();
-    bool is_dead() const;
+    void move();
+    bool isDead() const;
 };

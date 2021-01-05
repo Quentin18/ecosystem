@@ -59,11 +59,11 @@ void Ecosystem::drawText()
 
 void Ecosystem::drawAnimals()
 {
-    // Update and draw rabbits
+    // Move and draw rabbits
     for (std::list<Rabbit>::iterator it = rabbits.begin(); it != rabbits.end(); ++it)
     {
-        it->update();
-        if (it->is_dead())
+        it->move();
+        if (it->isDead())
         {
             // Remove rabbit
             it = rabbits.erase(it);
@@ -74,11 +74,11 @@ void Ecosystem::drawAnimals()
             window.draw(*it);
         }
     }
-    // Update and draw foxes 
+    // Move and draw foxes 
     for (std::list<Fox>::iterator it = foxes.begin(); it != foxes.end(); ++it)
     {
-        it->update();
-        if (it->is_dead())
+        it->move();
+        if (it->isDead())
         {
             // Remove fox
             it = foxes.erase(it);
