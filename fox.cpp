@@ -9,7 +9,7 @@ Fox::Fox()
 
 Fox::~Fox() {}
 
-void eat(std::list<Rabbit> *rabbits)
+void Fox::eat(std::list<Rabbit> &rabbits)
 {
     // TODO to complete
 }

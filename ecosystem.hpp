@@ -3,9 +3,9 @@
 #include <list>
 #include <SFML/Graphics.hpp>
 
+#include "food.hpp"
 #include "rabbit.hpp"
 #include "fox.hpp"
-#include "food.hpp"
 
 class Ecosystem
 {
@@ -20,6 +20,7 @@ private:
     void initText();
     void initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes);
     void initFoods(const unsigned int nbFoods);
+    void update();
     void drawText();
     void drawAnimals();
     void drawFoods();

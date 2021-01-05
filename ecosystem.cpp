@@ -47,6 +47,33 @@ Ecosystem::Ecosystem()
 
 Ecosystem::~Ecosystem() {}
 
+void Ecosystem::update()
+{
+    // Update rabbits
+    for (std::list<Rabbit>::iterator it = rabbits.begin(); it != rabbits.end(); ++it)
+    {
+        it->move();
+        it->eat(foods);
+        if (it->isDead())
+        {
+            // Remove rabbit
+            it = rabbits.erase(it);
+        }
+    }
+    // Update foxes
+    for (std::list<Fox>::iterator it = foxes.begin(); it != foxes.end(); ++it)
+    {
+        it->move();
+        it->eat(rabbits);
+        if (it->isDead())
+        {
+            // Remove fox
+            it = foxes.erase(it);
+        }
+    }
+    // TODO to complete
+}
+
 void Ecosystem::drawText()
 {
     std::stringstream ss;
@@ -59,35 +86,15 @@ void Ecosystem::drawText()
 
 void Ecosystem::drawAnimals()
 {
-    // Move and draw rabbits
+    // Draw rabbits
     for (std::list<Rabbit>::iterator it = rabbits.begin(); it != rabbits.end(); ++it)
     {
-        it->move();
-        if (it->isDead())
-        {
-            // Remove rabbit
-            it = rabbits.erase(it);
-        }
-        else
-        {
-            // Draw rabbit
-            window.draw(*it);
-        }
+        window.draw(*it);
     }
-    // Move and draw foxes 
+    // Draw foxes
     for (std::list<Fox>::iterator it = foxes.begin(); it != foxes.end(); ++it)
     {
-        it->move();
-        if (it->isDead())
-        {
-            // Remove fox
-            it = foxes.erase(it);
-        }
-        else
-        {
-            // Draw fox
-            window.draw(*it);
-        }
+        window.draw(*it);
     }
 }
 
@@ -122,6 +129,7 @@ void Ecosystem::run()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+    update();
     redraw();
     }
 }

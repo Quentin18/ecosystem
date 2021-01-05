@@ -9,7 +9,7 @@ Rabbit::Rabbit()
 
 Rabbit::~Rabbit() {}
 
-void eat(std::list<Food> *foods)
+void Rabbit::eat(std::list<Food> &foods)
 {
     // TODO to complete
 }
