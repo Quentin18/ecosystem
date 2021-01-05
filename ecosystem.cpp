@@ -18,31 +18,31 @@ void Ecosystem::initText()
     text.setPosition(TEXT_POS);
 }
 
-void Ecosystem::initAnimals()
+void Ecosystem::initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes)
 {
-    for (int i = 0; i < nb_rabbits; i++)
+    for (unsigned int i = 0; i < nbRabbits; i++)
     {
         rabbits.emplace_back();
     }
-    for (int i = 0; i < nb_foxes; i++)
+    for (unsigned int i = 0; i < nbFoxes; i++)
     {
         foxes.emplace_back();
     }
 }
 
-void Ecosystem::initFoods()
+void Ecosystem::initFoods(const unsigned int nbFoods)
 {
-    for (unsigned int i = 0; i < NB_FOODS; i++)
+    for (unsigned int i = 0; i < nbFoods; i++)
     {
         foods.emplace_back();
     }
 }
 
-Ecosystem::Ecosystem() : nb_rabbits(NB_RABBITS_START), nb_foxes(NB_FOXES_START)
+Ecosystem::Ecosystem()
 {
     initText();
-    initAnimals();
-    initFoods();
+    initAnimals(NB_RABBITS_START, NB_FOXES_START);
+    initFoods(NB_FOODS);
 }
 
 Ecosystem::~Ecosystem() {}
@@ -51,58 +51,51 @@ void Ecosystem::drawText()
 {
     std::stringstream ss;
     ss << "Time: " << clock.getElapsedTime().asSeconds() << "\n"
-        << "Rabbits: " << nb_rabbits << "\n"
-        << "Foxes: " << nb_foxes << "\n";
+        << "Rabbits: " << rabbits.size() << "\n"
+        << "Foxes: " << foxes.size() << "\n";
     text.setString(ss.str());
     window.draw(text);
 }
 
 void Ecosystem::drawAnimals()
 {
-    std::vector<Rabbit>::iterator it_rabbits;
-    std::vector<Fox>::iterator it_foxes;
     // Update and draw rabbits
-    it_rabbits = rabbits.begin();
-    while (it_rabbits != rabbits.end())
+    for (std::list<Rabbit>::iterator it = rabbits.begin(); it != rabbits.end(); ++it)
     {
-        it_rabbits->update();
-        if (!it_rabbits->is_dead())
-        {
-            window.draw(*it_rabbits);
-            it_rabbits++;
-        }
-        else
+        it->update();
+        if (it->is_dead())
         {
             // Remove rabbit
-            rabbits.erase(it_rabbits);
-            nb_rabbits--;
-        }
-    }
-    // Update and draw foxes
-    it_foxes = foxes.begin();
-    while (it_foxes != foxes.end())
-    {
-        it_foxes->update();
-        if (!it_foxes->is_dead())
-        {
-            window.draw(*it_foxes);
-            it_foxes++;
+            it = rabbits.erase(it);
         }
         else
         {
+            // Draw rabbit
+            window.draw(*it);
+        }
+    }
+    // Update and draw foxes 
+    for (std::list<Fox>::iterator it = foxes.begin(); it != foxes.end(); ++it)
+    {
+        it->update();
+        if (it->is_dead())
+        {
             // Remove fox
-            foxes.erase(it_foxes);
-            nb_foxes--;
+            it = foxes.erase(it);
+        }
+        else
+        {
+            // Draw fox
+            window.draw(*it);
         }
     }
 }
 
 void Ecosystem::drawFoods()
 {
-    std::vector<Food>::iterator it_foods;
-    for (it_foods = foods.begin(); it_foods < foods.end(); ++it_foods)
+    for (std::list<Food>::iterator it = foods.begin(); it != foods.end(); ++it)
     {
-        window.draw(*it_foods);
+        window.draw(*it);
     }
 }
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vector>
+#include <list>
 #include <SFML/Graphics.hpp>
 
 #include "rabbit.hpp"
@@ -14,15 +14,12 @@ private:
     sf::Font font;
     sf::Text text;
     sf::Clock clock;
-    std::vector<Rabbit> rabbits;
-    std::vector<Fox> foxes;
-    std::vector<Food> foods;
-    int nb_rabbits;
-    int nb_foxes;
-    int nb_foods;
+    std::list<Rabbit> rabbits;
+    std::list<Fox> foxes;
+    std::list<Food> foods;
     void initText();
-    void initAnimals();
-    void initFoods();
+    void initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes);
+    void initFoods(const unsigned int nbFoods);
     void drawText();
     void drawAnimals();
     void drawFoods();
