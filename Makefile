@@ -7,6 +7,9 @@ CLIBS=-lsfml-graphics -lsfml-window -lsfml-system -lm
 $(EXEC): $(OBJECTS)
 	$(CC) $(OBJECTS) $(CLIBS) -o $(EXEC)
 
+src/pbPlots/%.o: src/pbPlots/%.cpp
+	$(CC) $(INCDIR) -c $< -o $@
+
 %.o: %.cpp
 	$(CC) -Wall $(INCDIR) -c $< -o $@
 
