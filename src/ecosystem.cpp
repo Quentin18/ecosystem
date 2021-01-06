@@ -38,7 +38,7 @@ void Ecosystem::initFoods(const unsigned int nbFoods)
     }
 }
 
-Ecosystem::Ecosystem() : timer(0.0f), paused(false), showStats(true)
+Ecosystem::Ecosystem() : timer(0.0f), timeSpeed(1.0f), paused(false), showStats(true)
 {
     initText();
     initAnimals(NB_RABBITS_START, NB_FOXES_START);
@@ -52,7 +52,7 @@ void Ecosystem::update()
     // Update rabbits
     for (std::list<Rabbit>::iterator it = rabbits.begin(); it != rabbits.end(); ++it)
     {
-        it->move();
+        it->move(timeSpeed);
         it->eat(foods);
         if (it->isDead())
         {
@@ -63,7 +63,7 @@ void Ecosystem::update()
     // Update foxes
     for (std::list<Fox>::iterator it = foxes.begin(); it != foxes.end(); ++it)
     {
-        it->move();
+        it->move(timeSpeed);
         it->eat(rabbits);
         if (it->isDead())
         {
@@ -72,7 +72,7 @@ void Ecosystem::update()
         }
     }
     // Update timer
-    timer += clock.getElapsedTime().asSeconds();
+    timer += clock.getElapsedTime().asSeconds() * timeSpeed;
 
     // TODO to complete
 }
@@ -143,11 +143,21 @@ void Ecosystem::run()
                 case sf::Event::KeyPressed:
                     switch (event.key.code)
                     {
+                        // Pause
                         case sf::Keyboard::Space:
                             paused = !paused;
                             break;
+                        // Stats
                         case sf::Keyboard::S:
                             showStats = !showStats;
+                            break;
+                        // Accelerate time
+                        case sf::Keyboard::Right:
+                            timeSpeed *= 2;
+                            break;
+                        // Slow down time
+                        case sf::Keyboard::Left:
+                            timeSpeed /= 2;
                             break;
                         default:
                             break;

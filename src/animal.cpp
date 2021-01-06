@@ -31,14 +31,14 @@ Animal::Animal() : radius(ANIMAL_DEFAULT_RADIUS), hp(ANIMAL_MAX_HP)
 
 Animal::~Animal() {}
 
-void Animal::move()
+void Animal::move(const float timeSpeed)
 {
     x = map(Perlin::noise(tx), -1, 1, 0, WINDOW_WIDTH);
     y = map(Perlin::noise(ty), -1, 1, 0, WINDOW_HEIGHT);
     this->setPosition(x, y);
-    tx += 0.01;
-    ty += 0.01;
-    hp--;
+    tx += 0.01 * timeSpeed;
+    ty += 0.01 * timeSpeed;
+    hp -= timeSpeed;
 }
 
 bool Animal::isDead() const

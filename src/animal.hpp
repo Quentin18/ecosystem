@@ -13,7 +13,7 @@ private:
 public:
     Animal();
     ~Animal();
-    void move();
+    void move(const float timeSpeed);
     bool isDead() const;
     void resetHp();
     static float distance(const sf::Vector2f a, const sf::Vector2f b);
