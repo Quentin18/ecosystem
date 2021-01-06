@@ -38,7 +38,7 @@ void Ecosystem::initFoods(const unsigned int nbFoods)
     }
 }
 
-Ecosystem::Ecosystem() : paused(false), showStats(true)
+Ecosystem::Ecosystem() : timer(0.0f), paused(false), showStats(true)
 {
     initText();
     initAnimals(NB_RABBITS_START, NB_FOXES_START);
@@ -71,13 +71,16 @@ void Ecosystem::update()
             it = foxes.erase(it);
         }
     }
+    // Update timer
+    timer += clock.getElapsedTime().asSeconds();
+
     // TODO to complete
 }
 
 void Ecosystem::drawText()
 {
     std::stringstream ss;
-    ss << "Time: " << clock.getElapsedTime().asSeconds() << "\n"
+    ss << "Time: " << timer << "\n"
         << "Rabbits: " << rabbits.size() << "\n"
         << "Foxes: " << foxes.size() << "\n";
     text.setString(ss.str());
@@ -158,6 +161,7 @@ void Ecosystem::run()
         {
             update();
         }
+        clock.restart();
         redraw();
     }
 }

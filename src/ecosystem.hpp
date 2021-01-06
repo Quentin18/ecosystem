@@ -17,6 +17,7 @@ private:
     std::list<Rabbit> rabbits;
     std::list<Fox> foxes;
     std::list<Food> foods;
+    float timer;
     bool paused;
     bool showStats;
     void initText();
