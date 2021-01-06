@@ -1,3 +1,7 @@
+/**
+ * @file ecosystem.hpp
+ * @brief Header file for Ecosystem class
+ */
 #pragma once
 
 #include <list>
@@ -8,6 +12,9 @@
 #include "fox.hpp"
 #include "plot.hpp"
 
+/**
+ * Manage an ecosystem simulation
+ */
 class Ecosystem
 {
 private:

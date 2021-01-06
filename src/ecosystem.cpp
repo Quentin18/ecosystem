@@ -1,3 +1,7 @@
+/**
+ * @file ecosystem.cpp
+ * @brief Source code for Ecosystem class
+ */
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -38,6 +42,9 @@ void Ecosystem::initFoods(const unsigned int nbFoods)
     }
 }
 
+/**
+ * Ecosystem constructor
+ */
 Ecosystem::Ecosystem() : timer(0.0f), timeSpeed(1.0f), paused(false), showStats(true)
 {
     initText();
@@ -45,6 +52,9 @@ Ecosystem::Ecosystem() : timer(0.0f), timeSpeed(1.0f), paused(false), showStats(
     initFoods(NB_FOODS);
 }
 
+/**
+ * Ecosystem destructor
+ */
 Ecosystem::~Ecosystem() {}
 
 void Ecosystem::update()
