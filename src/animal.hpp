@@ -15,4 +15,5 @@ public:
     ~Animal();
     void move();
     bool isDead() const;
+    void resetHp();
 };

@@ -43,3 +43,8 @@ bool Animal::isDead() const
 {
     return hp <= 0;
 }
+
+void Animal::resetHp()
+{
+    hp = ANIMAL_MAX_HP;
+}
