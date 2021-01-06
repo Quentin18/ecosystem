@@ -1,5 +1,5 @@
 EXEC=ecosystem.out
-SOURCES=$(wildcard *.cpp)
+SOURCES=$(wildcard src/*.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 CC=g++ -std=c++11 -g
 CLIBS=-lsfml-graphics -lsfml-window -lsfml-system
