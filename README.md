@@ -54,6 +54,6 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 - [SFML Documentation](https://www.sfml-dev.org/documentation/2.5.1/index.php)
 - [Perlin Noise](https://en.wikipedia.org/wiki/Perlin_noise)
 
-## Auteurs
+## Auteur
 
 Quentin Deschamps
