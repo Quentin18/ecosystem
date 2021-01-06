@@ -81,6 +81,7 @@ void Ecosystem::drawText()
 {
     std::stringstream ss;
     ss << "Time: " << timer << "\n"
+        << "Speed: x" << timeSpeed << "\n"
         << "Rabbits: " << rabbits.size() << "\n"
         << "Foxes: " << foxes.size() << "\n";
     text.setString(ss.str());
