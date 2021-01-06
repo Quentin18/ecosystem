@@ -1,3 +1,7 @@
+/**
+ * @file constants.hpp
+ * @brief Header file containing the settings of the simulation
+ */
 #pragma once
 
 #include <SFML/Graphics.hpp>
