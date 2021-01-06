@@ -20,6 +20,14 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 ./ecosystem.out
 ```
 
+## Commandes
+
+- `Space` : mettre la simulation sur pause
+- `Right arrow` : accélérer la simulation par 2
+- `Left arrow` : ralentir la simulation par 2
+- `S` : afficher/masquer les statistiques
+- `P` : générer les graphes de la simulation
+
 ## Fonctionnement
 
 - Les animaux sont représentés par des cercles. Au début de la simulation, des lapins et des renards sont placés aléatoirement sur la fenêtre. Le rayon de leur cercle est aléatoire, choisi dans une plage de valeurs. Les animaux ont une quantité définie de points de vie (**à définir**).
@@ -34,6 +42,10 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
     * **Quand un renard rencontre un autre renard**, un nouveau renard naît avec une certaine probabilité (**à définir**).
     * **Quand un animal n'a plus de points de vie**, il meurt et disparaît de la fenêtre.
 
+## Personnalisation
+
+Les paramètres de la simulation peuvent être modifiés en changeant les valeurs du fichier `src/constants.hpp`.
+
 ## Tâches
 
 - [x] Créer la fenêtre de simulation
@@ -42,7 +54,7 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 - [x] Définir la classe pour la nourriture
 - [ ] Gérer les interactions entre les entités
 - [x] Ajouter sur la fenêtre les statistiques de la simulation (nombre d'animaux, timer)
-- [ ] Gérer la customisation de la simulation
+- [x] Gérer la customisation de la simulation
 - [x] Pouvoir faire pause, accélérer, ralentir la simulation
 - [x] Pouvoir générer un graphe de la simulation avec le nombre d'animaux en fonction du temps
 
@@ -53,6 +65,7 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 - [Simulation de la sélection naturelle](https://www.youtube.com/watch?v=0ZGbIKd0XrM)
 - [SFML Documentation](https://www.sfml-dev.org/documentation/2.5.1/index.php)
 - [Perlin Noise](https://en.wikipedia.org/wiki/Perlin_noise)
+- [pbPlots](https://github.com/InductiveComputerScience/pbPlots)
 
 ## Auteur
 
