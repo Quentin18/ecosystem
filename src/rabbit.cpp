@@ -1,6 +1,5 @@
 #include "rabbit.hpp"
 #include "constants.hpp"
-#include "distance.hpp"
 
 Rabbit::Rabbit()
 {

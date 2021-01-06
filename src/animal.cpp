@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include "animal.hpp"
 #include "constants.hpp"
 #include "perlin.hpp"
@@ -47,4 +49,9 @@ bool Animal::isDead() const
 void Animal::resetHp()
 {
     hp = ANIMAL_MAX_HP;
+}
+
+float Animal::distance(const sf::Vector2f a, const sf::Vector2f b)
+{
+    return std::sqrt(std::pow(a.x - b.x, 2) + std::pow(a.y - b.y, 2));
 }

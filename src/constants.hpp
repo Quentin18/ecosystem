@@ -6,7 +6,7 @@
 const unsigned int WINDOW_WIDTH = 1600;
 const unsigned int WINDOW_HEIGHT = 900;
 const char WINDOW_TITLE[] = "Ecosystem";
-const unsigned int FRAMERATE_LIMIT = 60;
+const unsigned int FRAMERATE_LIMIT = 50;
 const std::string FONT_PATH = "ComicRelief.ttf";
 const unsigned int TEXT_SIZE = 24;
 const sf::Vector2f TEXT_POS(5, 5);
