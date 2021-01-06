@@ -1,12 +1,6 @@
-#include <cmath>
-
 #include "rabbit.hpp"
 #include "constants.hpp"
-
-float distance(const sf::Vector2f a, const sf::Vector2f b)
-{
-    return std::sqrt(std::pow(a.x - b.x, 2) + std::pow(a.y - b.y, 2));
-}
+#include "distance.hpp"
 
 Rabbit::Rabbit()
 {
