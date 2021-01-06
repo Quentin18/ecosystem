@@ -1,14 +1,33 @@
+/**
+ * @file fox.cpp
+ * @brief Source code for Fox class
+ */
 #include "fox.hpp"
 #include "constants.hpp"
 
+/**
+ * Fox constructor
+ */
 Fox::Fox()
 {
     this->setRadius(FOXES_RADIUS);
     this->setFillColor(FOX_COLOR);
 }
 
+/**
+ * Fox destructor
+ */
 Fox::~Fox() {}
 
+/**
+ * Method for fox vs rabbit interaction
+ * 
+ * When a fox is near a rabbit, the fox eats the rabbit.
+ * The fox gets health points, the rabbit is dead.
+ * 
+ * @param rabbits list of rabbits
+ * 
+ */
 void Fox::eat(std::list<Rabbit> &rabbits)
 {
     sf::Vector2f posRabbit;
