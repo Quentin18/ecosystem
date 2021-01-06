@@ -20,7 +20,7 @@ Fox::Fox()
 Fox::~Fox() {}
 
 /**
- * Method for fox vs rabbit interaction
+ * Method for fox vs rabbit interaction.
  * 
  * When a fox is near a rabbit, the fox eats the rabbit.
  * The fox gets health points, the rabbit is dead.

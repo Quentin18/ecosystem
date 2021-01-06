@@ -1,14 +1,33 @@
+/**
+ * @file rabbit.cpp
+ * @brief Source code for Rabbit class
+ */
 #include "rabbit.hpp"
 #include "constants.hpp"
 
+/**
+ * Rabbit constructor
+ */
 Rabbit::Rabbit()
 {
     this->setRadius(RABBIT_RADIUS);
     this->setFillColor(RABBIT_COLOR);
 }
 
+/**
+ * Rabbit destructor
+ */
 Rabbit::~Rabbit() {}
 
+/**
+ * Method for rabbit vs food interaction.
+ * 
+ * When a rabbit is near a food, the rabbit eats the food.
+ * The rabbit gets health points, the food disappears.
+ * 
+ * @param food list of foods
+ * 
+ */
 void Rabbit::eat(std::list<Food> &foods)
 {
     sf::Vector2f posFood;
