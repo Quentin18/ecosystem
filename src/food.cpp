@@ -1,7 +1,14 @@
+/**
+ * @file food.cpp
+ * @brief Source code for Food class
+ */
 #include "food.hpp"
 #include "constants.hpp"
 #include "distributions.hpp"
 
+/**
+ * Food constructor
+ */
 Food::Food()
 {
     // Init circle
@@ -13,8 +20,14 @@ Food::Food()
     move();
 }
 
+/**
+ * Food destructor
+ */
 Food::~Food() {}
 
+/**
+ * Move the food to a random position
+ */
 void Food::move()
 {
     this->setPosition(X_DISTRIBUTION(RANDOM_ENGINE), Y_DISTRIBUTION(RANDOM_ENGINE));
