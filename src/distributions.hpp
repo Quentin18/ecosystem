@@ -1,3 +1,7 @@
+/**
+ * @file distributions.hpp
+ * @brief Header file defining random distributions
+ */
 #pragma once
 
 #include <random>
