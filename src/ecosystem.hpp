@@ -6,6 +6,7 @@
 #include "food.hpp"
 #include "rabbit.hpp"
 #include "fox.hpp"
+#include "plot.hpp"
 
 class Ecosystem
 {
@@ -29,6 +30,7 @@ private:
     void drawAnimals();
     void drawFoods();
     void redraw();
+    Plot plot;
 public:
     Ecosystem();
     ~Ecosystem();

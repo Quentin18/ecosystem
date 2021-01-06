@@ -1,8 +1,8 @@
 EXEC=ecosystem.out
-SOURCES=$(wildcard src/*.cpp)
+SOURCES=$(wildcard src/pbPlots/*.cpp) $(wildcard src/*.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 CC=g++ -std=c++11 -g
-CLIBS=-lsfml-graphics -lsfml-window -lsfml-system
+CLIBS=-lsfml-graphics -lsfml-window -lsfml-system -lm
 
 $(EXEC): $(OBJECTS)
 	$(CC) $(OBJECTS) $(CLIBS) -o $(EXEC)

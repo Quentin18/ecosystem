@@ -74,7 +74,8 @@ void Ecosystem::update()
     // Update timer
     timer += clock.getElapsedTime().asSeconds() * timeSpeed;
 
-    // TODO to complete
+    // Update plot
+    plot.update(timer, rabbits.size(), foxes.size());
 }
 
 void Ecosystem::drawText()
@@ -161,6 +162,10 @@ void Ecosystem::run()
                             timeSpeed /= 2;
                             break;
                         default:
+                            break;
+                        // Plot
+                        case sf::Keyboard::P:
+                            plot.savePNG(PLOT_WIDTH, PLOT_HEIGHT);
                             break;
                     }
                     break;
