@@ -43,7 +43,7 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 - [ ] Gérer les interactions entre les entités
 - [x] Ajouter sur la fenêtre les statistiques de la simulation (nombre d'animaux, timer)
 - [ ] Gérer la customisation de la simulation
-- [ ] Pouvoir faire pause, accélérer, ralentir la simulation
+- [x] Pouvoir faire pause, accélérer, ralentir la simulation
 - [ ] Pouvoir générer un graphe de la simulation avec le nombre d'animaux en fonction du temps
 
 ## Références
