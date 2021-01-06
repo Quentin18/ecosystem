@@ -44,7 +44,7 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 - [x] Ajouter sur la fenêtre les statistiques de la simulation (nombre d'animaux, timer)
 - [ ] Gérer la customisation de la simulation
 - [x] Pouvoir faire pause, accélérer, ralentir la simulation
-- [ ] Pouvoir générer un graphe de la simulation avec le nombre d'animaux en fonction du temps
+- [x] Pouvoir générer un graphe de la simulation avec le nombre d'animaux en fonction du temps
 
 ## Références
 
@@ -56,4 +56,4 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 
 ## Auteurs
 
-Quentin Deschamps - Majda El Atia
+Quentin Deschamps
