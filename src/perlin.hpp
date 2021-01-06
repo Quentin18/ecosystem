@@ -1,3 +1,7 @@
+/**
+ * @file perlin.hpp
+ * @brief Header of Perlin noise implementation in 1D
+ */
 #pragma once
 
 /**
@@ -8,6 +12,6 @@
 namespace Perlin
 {
     float interpolate(float a0, float a1, float w);
-    float rand_noise(int t);
+    float randNoise(int t);
     float noise(float x);
 }
