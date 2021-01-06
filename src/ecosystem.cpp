@@ -38,7 +38,7 @@ void Ecosystem::initFoods(const unsigned int nbFoods)
     }
 }
 
-Ecosystem::Ecosystem() : paused(false)
+Ecosystem::Ecosystem() : paused(false), showStats(true)
 {
     initText();
     initAnimals(NB_RABBITS_START, NB_FOXES_START);
@@ -111,7 +111,10 @@ void Ecosystem::redraw()
     window.clear(BG_COLOR);
     drawAnimals();
     drawFoods();
-    drawText();
+    if (showStats)
+    {
+        drawText();
+    }
     window.display();
 }
 
@@ -139,6 +142,9 @@ void Ecosystem::run()
                     {
                         case sf::Keyboard::Space:
                             paused = !paused;
+                            break;
+                        case sf::Keyboard::S:
+                            showStats = !showStats;
                             break;
                         default:
                             break;
