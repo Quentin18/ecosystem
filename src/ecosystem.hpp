@@ -17,6 +17,7 @@ private:
     std::list<Rabbit> rabbits;
     std::list<Fox> foxes;
     std::list<Food> foods;
+    bool paused;
     void initText();
     void initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes);
     void initFoods(const unsigned int nbFoods);

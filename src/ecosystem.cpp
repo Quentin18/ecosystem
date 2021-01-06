@@ -38,7 +38,7 @@ void Ecosystem::initFoods(const unsigned int nbFoods)
     }
 }
 
-Ecosystem::Ecosystem()
+Ecosystem::Ecosystem() : paused(false)
 {
     initText();
     initAnimals(NB_RABBITS_START, NB_FOXES_START);
@@ -126,10 +126,32 @@ void Ecosystem::run()
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            switch (event.type)
+            {
+                // Window closed
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+
+                // Key pressed
+                case sf::Event::KeyPressed:
+                    switch (event.key.code)
+                    {
+                        case sf::Keyboard::Space:
+                            paused = !paused;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
-    update();
-    redraw();
+        if (!paused)
+        {
+            update();
+        }
+        redraw();
     }
 }
