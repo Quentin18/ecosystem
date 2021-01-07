@@ -48,7 +48,7 @@ void Ecosystem::initFoods(const unsigned int nbFoods)
 /**
  * Ecosystem constructor
  */
-Ecosystem::Ecosystem() : timer(0.0f), timeSpeed(1.0f), paused(false), finished(true), showStats(true)
+Ecosystem::Ecosystem() : timer(0.0f), timeSpeed(1.0f), paused(false), finished(true), showStats(true), showPlot(false)
 {
     initText();
 }
@@ -126,11 +126,30 @@ void Ecosystem::drawFoods()
     }
 }
 
+void Ecosystem::drawPlot()
+{
+    sf::Texture texture;
+    sf::Sprite sprite;
+    texture.loadFromFile(PLOT_FILENAME);
+    sprite.setTexture(texture);
+    // Postion image to the middle of the window
+    sf::Vector2u size = window.getSize();
+    sprite.setPosition((size.x / 2.0) - (PLOT_WIDTH / 2.0), (size.y / 2.0) - (PLOT_HEIGHT / 2.0));
+    window.draw(sprite);
+}
+
 void Ecosystem::redraw()
 {
     window.clear(BG_COLOR);
-    drawAnimals();
-    drawFoods();
+    if (!finished)
+    {
+        drawAnimals();
+        drawFoods();
+    }
+    if (showPlot)
+    {
+        drawPlot();
+    }
     if (showStats)
     {
         drawText();
@@ -144,6 +163,7 @@ void Ecosystem::restart()
     initFoods(NB_FOODS);
     plot.reset();
     finished = false;
+    showPlot = false;
 }
 
 void Ecosystem::run()
@@ -184,10 +204,10 @@ void Ecosystem::run()
                         case sf::Keyboard::Left:
                             timeSpeed /= 2;
                             break;
-                        // Plot
-                        case sf::Keyboard::P:
-                            plot.savePNG(PLOT_FILENAME);
-                            break;
+                        // // Plot
+                        // case sf::Keyboard::P:
+                        //     plot.savePNG();
+                        //     break;
                         // Start simulation
                         case sf::Keyboard::Enter:
                             if (finished)
@@ -209,6 +229,8 @@ void Ecosystem::run()
             if (rabbits.empty() && foxes.empty())
             {
                 finished = true;
+                plot.savePNG();
+                showPlot = true;
             }
         }
         clock.restart();

@@ -30,6 +30,7 @@ private:
     bool paused;
     bool finished;
     bool showStats;
+    bool showPlot;
     void initText();
     void initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes);
     void initFoods(const unsigned int nbFoods);
@@ -37,6 +38,7 @@ private:
     void drawText();
     void drawAnimals();
     void drawFoods();
+    void drawPlot();
     void redraw();
     void restart();
     Plot plot;

@@ -38,6 +38,6 @@ const sf::Color FOOD_COLOR(255, 165, 0);
 const sf::Color CIRCLE_OUTLINE_COLOR = sf::Color::Black;
 
 // Plot
-const double PLOT_WIDTH = 600;
-const double PLOT_HEIGHT = 400;
+const double PLOT_WIDTH = 900;
+const double PLOT_HEIGHT = 600;
 const std::string PLOT_FILENAME = "results.png";
