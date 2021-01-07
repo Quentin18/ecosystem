@@ -3,13 +3,48 @@
  * @brief Source code for Plot class
  */
 #include "plot.hpp"
+#include "constants.hpp"
 
 /**
  * Plot constructor
+ * 
+ * @param width width of the scatter plot
+ * @param height height of the scatter plot
  */
 Plot::Plot()
 {
+    // Create image reference
     imageReference = CreateRGBABitmapImageReference();
+
+    // Create rabbits series
+    seriesRabbits = GetDefaultScatterPlotSeriesSettings();
+    seriesRabbits->xs = &timeVect;
+    seriesRabbits->ys = &rabbitsVect;
+    seriesRabbits->linearInterpolation = true;
+    seriesRabbits->lineType = toVector(L"dashed");
+    seriesRabbits->lineThickness = 2;
+    seriesRabbits->color = GetGray(0.3);
+
+    // Create foxes series
+    seriesFoxes = GetDefaultScatterPlotSeriesSettings();
+    seriesFoxes->xs = &timeVect;
+    seriesFoxes->ys = &foxesVect;
+    seriesFoxes->linearInterpolation = true;
+    seriesFoxes->lineType = toVector(L"solid");
+    seriesFoxes->lineThickness = 2;
+    seriesFoxes->color = GetBlack();
+
+    // Create scatter plot settings
+    settings = GetDefaultScatterPlotSettings();
+    settings->width = PLOT_WIDTH;
+    settings->height = PLOT_HEIGHT;
+    settings->autoBoundaries = true;
+    settings->autoPadding = true;
+    settings->title = toVector(L"Results of the simulation");
+    settings->xLabel = toVector(L"Time");
+    settings->yLabel = toVector(L"Number of animals");
+    settings->scatterPlotSeries->push_back(seriesRabbits);
+    settings->scatterPlotSeries->push_back(seriesFoxes);
 }
 
 /**
@@ -35,20 +70,13 @@ void Plot::update(const double time, const double nbRabbits, const double nbFoxe
 }
 
 /**
- * Save the scatter plot to PNG files
- * 
- * @param width width of the scatter plot
- * @param height height of the scatter plot
+ * Save the scatter plot to a PNG file
  */
-void Plot::savePNG(const double width, const double height)
+void Plot::savePNG()
 {
-    std::vector<double> *pngdata;
-    DrawScatterPlot(imageReference, width, height, &timeVect, &rabbitsVect);
-	pngdata = ConvertToPNG(imageReference->image);
-	WriteToFile(pngdata, "rabbitsPlot.png");
-    DrawScatterPlot(imageReference, width, height, &timeVect, &foxesVect);
-	pngdata = ConvertToPNG(imageReference->image);
-	WriteToFile(pngdata, "foxesPlot.png");
+    DrawScatterPlotFromSettings(imageReference, settings);
+    pngdata = ConvertToPNG(imageReference->image);
+	WriteToFile(pngdata, "results.png");
 }
 
 /**

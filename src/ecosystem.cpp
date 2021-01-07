@@ -184,11 +184,9 @@ void Ecosystem::run()
                         case sf::Keyboard::Left:
                             timeSpeed /= 2;
                             break;
-                        default:
-                            break;
                         // Plot
                         case sf::Keyboard::P:
-                            plot.savePNG(PLOT_WIDTH, PLOT_HEIGHT);
+                            plot.savePNG();
                             break;
                         // Start simulation
                         case sf::Keyboard::Enter:
@@ -196,6 +194,8 @@ void Ecosystem::run()
                             {
                                 restart();
                             }
+                            break;
+                        default:
                             break;
                     }
                     break;
