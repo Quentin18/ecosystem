@@ -40,3 +40,4 @@ const sf::Color CIRCLE_OUTLINE_COLOR = sf::Color::Black;
 // Plot
 const double PLOT_WIDTH = 600;
 const double PLOT_HEIGHT = 400;
+const std::string PLOT_FILENAME = "results.png";

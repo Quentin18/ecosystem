@@ -186,7 +186,7 @@ void Ecosystem::run()
                             break;
                         // Plot
                         case sf::Keyboard::P:
-                            plot.savePNG();
+                            plot.savePNG(PLOT_FILENAME);
                             break;
                         // Start simulation
                         case sf::Keyboard::Enter:

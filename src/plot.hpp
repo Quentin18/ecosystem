@@ -28,6 +28,6 @@ public:
     Plot();
     ~Plot();
     void update(const double time, const double nbRabbits, const double nbFoxes);
-    void savePNG();
+    void savePNG(const std::string filename);
     void reset();
 };

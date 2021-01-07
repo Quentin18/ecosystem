@@ -85,12 +85,14 @@ void Plot::update(const double time, const double nbRabbits, const double nbFoxe
 
 /**
  * Save the scatter plot to a PNG file
+ * 
+ * @param filename PNG filename
  */
-void Plot::savePNG()
+void Plot::savePNG(const std::string filename)
 {
     DrawScatterPlotFromSettings(imageReference, settings);
     pngdata = ConvertToPNG(imageReference->image);
-	WriteToFile(pngdata, "results.png");
+	WriteToFile(pngdata, filename);
 }
 
 /**
