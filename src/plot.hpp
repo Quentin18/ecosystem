@@ -21,6 +21,9 @@ private:
     std::vector<double> rabbitsVect;
     std::vector<double> foxesVect;
     std::vector<double> *pngdata;
+    void initRabbitsSeries();
+    void initFoxesSeries();
+    void initSettings();
 public:
     Plot();
     ~Plot();

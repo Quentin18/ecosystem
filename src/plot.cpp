@@ -6,17 +6,10 @@
 #include "constants.hpp"
 
 /**
- * Plot constructor
- * 
- * @param width width of the scatter plot
- * @param height height of the scatter plot
+ * Init rabbits series
  */
-Plot::Plot()
+void Plot::initRabbitsSeries()
 {
-    // Create image reference
-    imageReference = CreateRGBABitmapImageReference();
-
-    // Create rabbits series
     seriesRabbits = GetDefaultScatterPlotSeriesSettings();
     seriesRabbits->xs = &timeVect;
     seriesRabbits->ys = &rabbitsVect;
@@ -24,8 +17,13 @@ Plot::Plot()
     seriesRabbits->lineType = toVector(L"dashed");
     seriesRabbits->lineThickness = 2;
     seriesRabbits->color = GetGray(0.3);
+}
 
-    // Create foxes series
+/**
+ * Init foxes series
+ */
+void Plot::initFoxesSeries()
+{
     seriesFoxes = GetDefaultScatterPlotSeriesSettings();
     seriesFoxes->xs = &timeVect;
     seriesFoxes->ys = &foxesVect;
@@ -33,8 +31,13 @@ Plot::Plot()
     seriesFoxes->lineType = toVector(L"solid");
     seriesFoxes->lineThickness = 2;
     seriesFoxes->color = GetBlack();
+}
 
-    // Create scatter plot settings
+/**
+ * Init scatter plot settings
+ */
+void Plot::initSettings()
+{
     settings = GetDefaultScatterPlotSettings();
     settings->width = PLOT_WIDTH;
     settings->height = PLOT_HEIGHT;
@@ -45,6 +48,17 @@ Plot::Plot()
     settings->yLabel = toVector(L"Number of animals");
     settings->scatterPlotSeries->push_back(seriesRabbits);
     settings->scatterPlotSeries->push_back(seriesFoxes);
+}
+
+/**
+ * Plot constructor
+ */
+Plot::Plot()
+{
+    imageReference = CreateRGBABitmapImageReference();
+    initRabbitsSeries();
+    initFoxesSeries();
+    initSettings();
 }
 
 /**
