@@ -36,9 +36,13 @@ private:
     bool finished;
     bool showStats;
     bool showPlot;
+    void addRabbits(const unsigned int nbRabbits);
+    void addFoxes(const unsigned int nbFoxes);
     void initText();
     void initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes);
     void initFoods(const unsigned int nbFoods);
+    void updateRabbits();
+    void updateFoxes();
     void update();
     void drawStats();
     void drawCommands();

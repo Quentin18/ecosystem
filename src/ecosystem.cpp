@@ -10,6 +10,32 @@
 #include "constants.hpp"
 
 /**
+ * Add rabbits to the list
+ * 
+ * @param nbRabbits number of rabbits
+ */
+void Ecosystem::addRabbits(const unsigned int nbRabbits)
+{
+    for (unsigned int i = 0; i < nbRabbits; i++)
+    {
+        rabbits.emplace_back();
+    }
+}
+
+/**
+ * Add foxes to the list
+ * 
+ * @param nbFoxes number of foxes
+ */
+void Ecosystem::addFoxes(const unsigned int nbFoxes)
+{
+    for (unsigned int i = 0; i < nbFoxes; i++)
+    {
+        foxes.emplace_back();
+    }
+}
+
+/**
  * Init Text objects
  */
 void Ecosystem::initText()
@@ -41,15 +67,9 @@ void Ecosystem::initText()
 void Ecosystem::initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes)
 {
     rabbits.clear();
-    for (unsigned int i = 0; i < nbRabbits; i++)
-    {
-        rabbits.emplace_back();
-    }
     foxes.clear();
-    for (unsigned int i = 0; i < nbFoxes; i++)
-    {
-        foxes.emplace_back();
-    }
+    addRabbits(nbRabbits);
+    addFoxes(nbFoxes);
 }
 
 /**
@@ -89,14 +109,17 @@ Ecosystem::Ecosystem() :
  */
 Ecosystem::~Ecosystem() {}
 
-void Ecosystem::update()
+/**
+ * Update the rabbits
+ */
+void Ecosystem::updateRabbits()
 {
     unsigned int nbNewRabbits = 0;
-    unsigned int nbNewFoxes = 0;
-    // Update rabbits
     for (std::list<Rabbit>::iterator it = rabbits.begin(); it != rabbits.end(); ++it)
     {
+        // Move
         it->move(timeSpeed);
+        // Eat
         nbFoodsEaten += it->eat(foods);
         if (it->isDead())
         {
@@ -117,14 +140,20 @@ void Ecosystem::update()
     }
     nbRabbitsBirths += nbNewRabbits;
     // Create new rabbits
-    for (unsigned int i = 0; i < nbNewRabbits; i++)
-    {
-        rabbits.emplace_back();
-    }
-    // Update foxes
+    addRabbits(nbNewRabbits);
+}
+
+/**
+ * Update the foxes
+ */
+void Ecosystem::updateFoxes()
+{
+    unsigned int nbNewFoxes = 0;
     for (std::list<Fox>::iterator it = foxes.begin(); it != foxes.end(); ++it)
     {
+        // Move
         it->move(timeSpeed);
+        // Eat
         nbRabbitsKilled += it->eat(rabbits);
         if (it->isDead())
         {
@@ -145,10 +174,17 @@ void Ecosystem::update()
     }
     nbFoxesBirths += nbNewFoxes;
     // Create new foxes
-    for (unsigned int i = 0; i < nbNewFoxes; i++)
-    {
-        foxes.emplace_back();
-    }
+    addFoxes(nbNewFoxes);
+}
+
+/**
+ * Update the ecosystem
+ */
+void Ecosystem::update()
+{
+    // Update animals
+    updateRabbits();
+    updateFoxes();
     // Update timer
     timer += clock.getElapsedTime().asSeconds() * timeSpeed;
     // Update plot
