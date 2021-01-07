@@ -20,7 +20,8 @@ class Ecosystem
 private:
     sf::RenderWindow window;
     sf::Font font;
-    sf::Text text;
+    sf::Text statsText;
+    sf::Text commandsText;
     sf::Clock clock;
     std::list<Rabbit> rabbits;
     std::list<Fox> foxes;
@@ -35,7 +36,8 @@ private:
     void initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes);
     void initFoods(const unsigned int nbFoods);
     void update();
-    void drawText();
+    void drawStats();
+    void drawCommands();
     void drawAnimals();
     void drawFoods();
     void drawPlot();

@@ -9,19 +9,35 @@
 #include "ecosystem.hpp"
 #include "constants.hpp"
 
+/**
+ * Init Text objects
+ */
 void Ecosystem::initText()
 {
+    // Load font
     if (!font.loadFromFile(FONT_PATH))
     {
         std::cerr << "Error: can't load " << FONT_PATH << std::endl;
         exit(EXIT_FAILURE);
     }
-    text.setFont(font);
-    text.setCharacterSize(TEXT_SIZE);
-    text.setFillColor(TEXT_COLOR);
-    text.setPosition(TEXT_POS);
+    // Init stats text
+    statsText.setFont(font);
+    statsText.setCharacterSize(TEXT_SIZE);
+    statsText.setFillColor(TEXT_COLOR);
+    statsText.setPosition(STATS_POS);
+    // Init commands text
+    commandsText.setFont(font);
+    commandsText.setCharacterSize(TEXT_SIZE);
+    commandsText.setFillColor(TEXT_COLOR);
+    commandsText.setPosition(COMMANDS_POS);
 }
 
+/**
+ * Init animals
+ * 
+ * @param nbRabbits number of rabbits
+ * @param nbFoxes number of foxes
+ */
 void Ecosystem::initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes)
 {
     rabbits.clear();
@@ -36,6 +52,11 @@ void Ecosystem::initAnimals(const unsigned int nbRabbits, const unsigned int nbF
     }
 }
 
+/**
+ * Init foods
+ * 
+ * @param nbFoods number of foods
+ */
 void Ecosystem::initFoods(const unsigned int nbFoods)
 {
     foods.clear();
@@ -89,21 +110,42 @@ void Ecosystem::update()
     plot.update(timer, rabbits.size(), foxes.size());
 }
 
-void Ecosystem::drawText()
+/**
+ * Draw the stats
+ */
+void Ecosystem::drawStats()
 {
     std::stringstream ss;
     ss << "Time: " << timer << "\n"
         << "Speed: x" << timeSpeed << "\n"
         << "Rabbits: " << rabbits.size() << "\n"
         << "Foxes: " << foxes.size() << "\n";
-    if (finished)
+    if (paused)
     {
-        ss << "Press ENTER to start the simulation !";
+        ss << "Paused";
     }
-    text.setString(ss.str());
-    window.draw(text);
+    statsText.setString(ss.str());
+    window.draw(statsText);
 }
 
+/**
+ * Draw the commands
+ */
+void Ecosystem::drawCommands()
+{
+    std::stringstream ss;
+    ss << "Enter: start\n"
+        << "Space: pause\n"
+        << "Right arrow: speed up by 2\n"
+        << "Left arrow: slow down by 2\n"
+        << "S: show/hide stats\n";
+    commandsText.setString(ss.str());
+    window.draw(commandsText);
+}
+
+/**
+ * Draw animals
+ */
 void Ecosystem::drawAnimals()
 {
     // Draw rabbits
@@ -118,6 +160,9 @@ void Ecosystem::drawAnimals()
     }
 }
 
+/**
+ * Draw foods
+ */
 void Ecosystem::drawFoods()
 {
     for (std::list<Food>::iterator it = foods.begin(); it != foods.end(); ++it)
@@ -126,18 +171,22 @@ void Ecosystem::drawFoods()
     }
 }
 
+/**
+ * Draw the scatter plot
+ */
 void Ecosystem::drawPlot()
 {
     sf::Texture texture;
     sf::Sprite sprite;
     texture.loadFromFile(PLOT_FILENAME);
     sprite.setTexture(texture);
-    // Postion image to the middle of the window
-    sf::Vector2u size = window.getSize();
-    sprite.setPosition((size.x / 2.0) - (PLOT_WIDTH / 2.0), (size.y / 2.0) - (PLOT_HEIGHT / 2.0));
+    sprite.setPosition(PLOT_POS);
     window.draw(sprite);
 }
 
+/**
+ * Redraw the window
+ */
 void Ecosystem::redraw()
 {
     window.clear(BG_COLOR);
@@ -152,11 +201,15 @@ void Ecosystem::redraw()
     }
     if (showStats)
     {
-        drawText();
+        drawStats();
     }
+    drawCommands();
     window.display();
 }
 
+/**
+ * Restart the simulation
+ */
 void Ecosystem::restart()
 {
     initAnimals(NB_RABBITS_START, NB_FOXES_START);
@@ -166,8 +219,12 @@ void Ecosystem::restart()
     showPlot = false;
 }
 
+/**
+ * Run the ecosystem simulator
+ */
 void Ecosystem::run()
 {
+    // Create window
     window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
     window.setFramerateLimit(FRAMERATE_LIMIT);
 
@@ -188,6 +245,13 @@ void Ecosystem::run()
                 case sf::Event::KeyPressed:
                     switch (event.key.code)
                     {
+                        // Start
+                        case sf::Keyboard::Enter:
+                            if (finished)
+                            {
+                                restart();
+                            }
+                            break;
                         // Pause
                         case sf::Keyboard::Space:
                             paused = !paused;
@@ -196,24 +260,13 @@ void Ecosystem::run()
                         case sf::Keyboard::S:
                             showStats = !showStats;
                             break;
-                        // Accelerate time
+                        // Speed up
                         case sf::Keyboard::Right:
                             timeSpeed *= 2;
                             break;
-                        // Slow down time
+                        // Slow down
                         case sf::Keyboard::Left:
                             timeSpeed /= 2;
-                            break;
-                        // // Plot
-                        // case sf::Keyboard::P:
-                        //     plot.savePNG();
-                        //     break;
-                        // Start simulation
-                        case sf::Keyboard::Enter:
-                            if (finished)
-                            {
-                                restart();
-                            }
                             break;
                         default:
                             break;

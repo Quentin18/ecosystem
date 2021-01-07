@@ -13,7 +13,8 @@ const char WINDOW_TITLE[] = "Ecosystem";
 const unsigned int FRAMERATE_LIMIT = 50;
 const std::string FONT_PATH = "ComicRelief.ttf";
 const unsigned int TEXT_SIZE = 24;
-const sf::Vector2f TEXT_POS(5, 5);
+const sf::Vector2f STATS_POS(5, 5);
+const sf::Vector2f COMMANDS_POS(5, WINDOW_HEIGHT - 180);
 const float CIRCLE_THICKNESS = 1;
 
 // Animals
@@ -41,3 +42,4 @@ const sf::Color CIRCLE_OUTLINE_COLOR = sf::Color::Black;
 const double PLOT_WIDTH = 900;
 const double PLOT_HEIGHT = 600;
 const std::string PLOT_FILENAME = "results.png";
+const sf::Vector2f PLOT_POS((WINDOW_WIDTH / 2.0) - (PLOT_WIDTH / 2.0), (WINDOW_HEIGHT / 2.0) - (PLOT_HEIGHT / 2.0));
