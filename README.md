@@ -48,6 +48,23 @@ Pour lancer la simulation, pressez la touche `Enter`.
 
 Les paramètres de la simulation peuvent être modifiés en changeant les valeurs du fichier `src/constants.hpp`.
 
+## Statistiques
+
+Vous pouvez voir les statistiques de la simulation en haut de la fenêtre :
+
+- Le temps en secondes
+- La vitesse de la simulation
+- Le nombre actuel de lapins
+- La nombre actuel de renards
+- Le nombre total de nourritures mangées par les lapins
+- Le nombre total de lapins tués par les renards
+- Le nombre de lapins nés
+- Le nombre de renards nés
+
+Le mot `Paused` s'affiche si la simulation est sur pause.
+
+À la fin de la simulation, un graphique apparaît montrant l'évolution du nombre de lapins et de renards en fonction du temps.
+
 ## Tâches
 
 - [x] Créer la fenêtre de simulation
