@@ -44,7 +44,7 @@ void Plot::initSettings()
     settings->autoBoundaries = true;
     settings->autoPadding = true;
     settings->title = toVector(L"Results of the simulation");
-    settings->xLabel = toVector(L"Time");
+    settings->xLabel = toVector(L"Time (seconds)");
     settings->yLabel = toVector(L"Number of animals");
     settings->scatterPlotSeries->push_back(seriesRabbits);
     settings->scatterPlotSeries->push_back(seriesFoxes);
