@@ -50,3 +50,13 @@ void Plot::savePNG(const double width, const double height)
 	pngdata = ConvertToPNG(imageReference->image);
 	WriteToFile(pngdata, "foxesPlot.png");
 }
+
+/**
+ * Reset the data vectors
+ */
+void Plot::reset()
+{
+    timeVect.clear();
+    rabbitsVect.clear();
+    foxesVect.clear();
+}

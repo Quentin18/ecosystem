@@ -22,4 +22,5 @@ public:
     ~Plot();
     void update(const double time, const double nbRabbits, const double nbFoxes);
     void savePNG(const double width, const double height);
+    void reset();
 };
