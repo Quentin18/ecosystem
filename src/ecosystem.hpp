@@ -28,6 +28,7 @@ private:
     float timer;
     float timeSpeed;
     bool paused;
+    bool finished;
     bool showStats;
     void initText();
     void initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes);

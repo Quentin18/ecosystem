@@ -24,10 +24,12 @@ void Ecosystem::initText()
 
 void Ecosystem::initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes)
 {
+    rabbits.clear();
     for (unsigned int i = 0; i < nbRabbits; i++)
     {
         rabbits.emplace_back();
     }
+    foxes.clear();
     for (unsigned int i = 0; i < nbFoxes; i++)
     {
         foxes.emplace_back();
@@ -36,6 +38,7 @@ void Ecosystem::initAnimals(const unsigned int nbRabbits, const unsigned int nbF
 
 void Ecosystem::initFoods(const unsigned int nbFoods)
 {
+    foods.clear();
     for (unsigned int i = 0; i < nbFoods; i++)
     {
         foods.emplace_back();
@@ -45,11 +48,9 @@ void Ecosystem::initFoods(const unsigned int nbFoods)
 /**
  * Ecosystem constructor
  */
-Ecosystem::Ecosystem() : timer(0.0f), timeSpeed(1.0f), paused(false), showStats(true)
+Ecosystem::Ecosystem() : timer(0.0f), timeSpeed(1.0f), paused(false), finished(true), showStats(true)
 {
     initText();
-    initAnimals(NB_RABBITS_START, NB_FOXES_START);
-    initFoods(NB_FOODS);
 }
 
 /**
@@ -95,6 +96,10 @@ void Ecosystem::drawText()
         << "Speed: x" << timeSpeed << "\n"
         << "Rabbits: " << rabbits.size() << "\n"
         << "Foxes: " << foxes.size() << "\n";
+    if (finished)
+    {
+        ss << "Press ENTER to start the simulation !";
+    }
     text.setString(ss.str());
     window.draw(text);
 }
@@ -177,15 +182,28 @@ void Ecosystem::run()
                         case sf::Keyboard::P:
                             plot.savePNG(PLOT_WIDTH, PLOT_HEIGHT);
                             break;
+                        // Start simulation
+                        case sf::Keyboard::Enter:
+                            if (finished)
+                            {
+                                initAnimals(NB_RABBITS_START, NB_FOXES_START);
+                                initFoods(NB_FOODS);
+                                finished = false;
+                            }
+                            break;
                     }
                     break;
                 default:
                     break;
             }
         }
-        if (!paused)
+        if (!paused && !finished)
         {
             update();
+            if (rabbits.empty() && foxes.empty())
+            {
+                finished = true;
+            }
         }
         clock.restart();
         redraw();
