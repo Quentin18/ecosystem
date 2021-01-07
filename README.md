@@ -22,6 +22,7 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 
 ## Commandes
 
+- `Enter` : démarrer la simulation
 - `Space` : mettre la simulation sur pause
 - `Right arrow` : accélérer la simulation par 2
 - `Left arrow` : ralentir la simulation par 2
