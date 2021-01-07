@@ -18,13 +18,14 @@ const sf::Vector2f COMMANDS_POS(5, WINDOW_HEIGHT - 180);
 const float CIRCLE_THICKNESS = 1;
 
 // Animals
-const unsigned int NB_RABBITS_START = 30;
-const unsigned int NB_FOXES_START = 3;
+const unsigned int NB_RABBITS_START = 50;
+const unsigned int NB_FOXES_START = 5;
 const float RABBIT_RADIUS = 8;
 const float FOXES_RADIUS = 12;
 const float ANIMAL_DEFAULT_RADIUS = 10;
 const unsigned int ANIMAL_MAX_HP = 1000;
-const float RABBIT_REPRODUCTION_PROBABILITY = 0.3;
+const float RABBIT_REPRODUCTION_PROBABILITY = 0.5;
+const float FOX_REPRODUCTION_PROBABILITY = 0.5;
 
 // Food
 const unsigned int NB_FOODS = 10;

@@ -4,6 +4,7 @@
  */
 #include "fox.hpp"
 #include "constants.hpp"
+#include "distributions.hpp"
 
 /**
  * Fox constructor
@@ -47,4 +48,19 @@ int Fox::eat(std::list<Rabbit> &rabbits)
         }
     }
     return 0;
+}
+
+/**
+ * Method for fox vs fox interaction.
+ * 
+ * When a fox is near another fox, a new fox is created with a probability.
+ * 
+ * @param fox a fox
+ * @return true if there is a new fox, false else
+ * 
+ */
+bool Fox::reproduce(Fox &fox)
+{
+    float d = distance(fox.getPosition(), this->getPosition());
+    return (d <= this->getRadius() && RAND_DISTRIBUTION(RANDOM_ENGINE) <= FOX_REPRODUCTION_PROBABILITY);
 }

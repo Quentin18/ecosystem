@@ -18,4 +18,5 @@ public:
     Fox();
     ~Fox();
     int eat(std::list<Rabbit> &rabbits);
+    bool reproduce(Fox &fox);
 };

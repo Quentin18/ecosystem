@@ -31,6 +31,7 @@ private:
     unsigned int nbFoodsEaten;
     unsigned int nbRabbitsKilled;
     unsigned int nbRabbitsBirths;
+    unsigned int nbFoxesBirths;
     bool paused;
     bool finished;
     bool showStats;
