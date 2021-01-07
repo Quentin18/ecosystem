@@ -26,9 +26,10 @@ Fox::~Fox() {}
  * The fox gets health points, the rabbit is dead.
  * 
  * @param rabbits list of rabbits
+ * @return int 1 if a rabbit is killed, 0 else
  * 
  */
-void Fox::eat(std::list<Rabbit> &rabbits)
+int Fox::eat(std::list<Rabbit> &rabbits)
 {
     sf::Vector2f posRabbit;
     sf::Vector2f posFox = this->getPosition();
@@ -42,6 +43,8 @@ void Fox::eat(std::list<Rabbit> &rabbits)
             // The fox eats the rabbit
             resetHp();
             it = rabbits.erase(it);
+            return 1;
         }
     }
+    return 0;
 }

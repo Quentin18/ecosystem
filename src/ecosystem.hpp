@@ -28,6 +28,8 @@ private:
     std::list<Food> foods;
     float timer;
     float timeSpeed;
+    int nbFoodsEaten;
+    int nbRabbitsKilled;
     bool paused;
     bool finished;
     bool showStats;

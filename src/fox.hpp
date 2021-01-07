@@ -17,5 +17,5 @@ class Fox : public Animal
 public:
     Fox();
     ~Fox();
-    void eat(std::list<Rabbit> &rabbits);
+    int eat(std::list<Rabbit> &rabbits);
 };

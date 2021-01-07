@@ -26,9 +26,10 @@ Rabbit::~Rabbit() {}
  * The rabbit gets health points, the food disappears.
  * 
  * @param food list of foods
+ * @return int 1 if a food is eaten, 0 else
  * 
  */
-void Rabbit::eat(std::list<Food> &foods)
+int Rabbit::eat(std::list<Food> &foods)
 {
     sf::Vector2f posFood;
     sf::Vector2f posRabbit = this->getPosition();
@@ -42,6 +43,8 @@ void Rabbit::eat(std::list<Food> &foods)
             // The rabbit eats food
             resetHp();
             it->move();
+            return 1;
         }
     }
+    return 0;
 }
