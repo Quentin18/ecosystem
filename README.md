@@ -20,6 +20,8 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 ./ecosystem.out
 ```
 
+Pour lancer la simulation, pressez la touche `Enter`.
+
 ## Commandes
 
 - `Enter` : démarrer la simulation
@@ -27,20 +29,19 @@ Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
 - `Right arrow` : accélérer la simulation par 2
 - `Left arrow` : ralentir la simulation par 2
 - `S` : afficher/masquer les statistiques
-- `P` : générer les graphes de la simulation
 
 ## Fonctionnement
 
-- Les animaux sont représentés par des cercles. Au début de la simulation, des lapins et des renards sont placés aléatoirement sur la fenêtre. Le rayon de leur cercle est aléatoire, choisi dans une plage de valeurs. Les animaux ont une quantité définie de points de vie (**à définir**).
+- Les animaux sont représentés par des cercles. Au début de la simulation, des lapins et des renards sont placés aléatoirement sur la fenêtre. Les animaux débutent avec `1000` points de vie.
 
 - De plus, une certaine quantité de nourriture est répartie sur la fenêtre. La nourriture est aussi représentée par un cercle.
 
-- À chaque regénération de la fenêtre (voir *framerate*), les animaux se déplacent pseudo-aléatoirement en utilisant le *Perlin noise*. Leurs points de vie diminuent d'une quantité définie (**à définir**). Voici les interactions entre les entités :
+- À chaque regénération de la fenêtre (voir *framerate*), les animaux se déplacent pseudo-aléatoirement en utilisant le *Perlin noise*. Leurs points de vie diminuent d'un point de vie par déplacement. Voici les interactions entre les entités :
 
-    * **Quand un lapin rencontre de la nourriture**, le lapin mange la nourriture. La nourriture est regénérée à un autre endroit de la fenêtre et le lapin gagne une certaine quantité de points de vie (**à définir**).
-    * **Quand un renard rencontre un lapin**, le renard mange le lapin avec une certaine probabilité (**à définir**). Le renard gagne alors une quantité de points de vie, et le lapin disparaît.
-    * **Quand un lapin rencontre un autre lapin**, un nouveau lapin naît avec une certaine probabilité (**à définir**).
-    * **Quand un renard rencontre un autre renard**, un nouveau renard naît avec une certaine probabilité (**à définir**).
+    * **Quand un lapin rencontre de la nourriture**, le lapin mange la nourriture. La nourriture est regénérée à un autre endroit de la fenêtre et le lapin régénère ses points de vie à la valeur de départ.
+    * **Quand un renard rencontre un lapin**, le renard mange le lapin. Le renard régénère ses points de vie, et le lapin disparaît.
+    * **Quand un lapin rencontre un autre lapin**, un nouveau lapin naît avec une certaine probabilité (définie à `0.5`).
+    * **Quand un renard rencontre un autre renard**, un nouveau renard naît avec une certaine probabilité (définie à `0.5`).
     * **Quand un animal n'a plus de points de vie**, il meurt et disparaît de la fenêtre.
 
 ## Personnalisation
@@ -53,7 +54,7 @@ Les paramètres de la simulation peuvent être modifiés en changeant les valeur
 - [x] Définir les classes pour les animaux
 - [x] Gérer le déplacement des animaux
 - [x] Définir la classe pour la nourriture
-- [ ] Gérer les interactions entre les entités
+- [x] Gérer les interactions entre les entités
 - [x] Ajouter sur la fenêtre les statistiques de la simulation (nombre d'animaux, timer)
 - [x] Gérer la customisation de la simulation
 - [x] Pouvoir faire pause, accélérer, ralentir la simulation
