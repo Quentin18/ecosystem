@@ -1,6 +1,8 @@
 # Écosystème
 
-Ce projet est une simulation en C++ d'un écosystème basique.
+Ce projet est une simulation en C++ d'un écosystème basique, où des lapins et des renards évoluent.
+
+![Simulation](img/simulation.png)
 
 ## Installation
 
@@ -64,6 +66,9 @@ Vous pouvez voir les statistiques de la simulation en haut de la fenêtre :
 Le mot `Paused` s'affiche si la simulation est sur pause.
 
 À la fin de la simulation, un graphique apparaît montrant l'évolution du nombre de lapins et de renards en fonction du temps.
+Celui-ci est généré grâce à [pbPlots](https://github.com/InductiveComputerScience/pbPlots).
+
+![Graph](img/example_results.png)
 
 ## Tâches
 
