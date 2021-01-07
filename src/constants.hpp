@@ -24,6 +24,7 @@ const float RABBIT_RADIUS = 8;
 const float FOXES_RADIUS = 12;
 const float ANIMAL_DEFAULT_RADIUS = 10;
 const unsigned int ANIMAL_MAX_HP = 1000;
+const float RABBIT_REPRODUCTION_PROBABILITY = 0.3;
 
 // Food
 const unsigned int NB_FOODS = 10;

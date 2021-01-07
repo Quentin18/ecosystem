@@ -30,6 +30,7 @@ private:
     float timeSpeed;
     unsigned int nbFoodsEaten;
     unsigned int nbRabbitsKilled;
+    unsigned int nbRabbitsBirths;
     bool paused;
     bool finished;
     bool showStats;

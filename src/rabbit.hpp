@@ -18,4 +18,5 @@ public:
     Rabbit();
     ~Rabbit();
     int eat(std::list<Food> &foods);
+    bool reproduce(Rabbit &rabbit);
 };

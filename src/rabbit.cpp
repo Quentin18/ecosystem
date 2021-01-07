@@ -4,6 +4,7 @@
  */
 #include "rabbit.hpp"
 #include "constants.hpp"
+#include "distributions.hpp"
 
 /**
  * Rabbit constructor
@@ -47,4 +48,19 @@ int Rabbit::eat(std::list<Food> &foods)
         }
     }
     return 0;
+}
+
+/**
+ * Method for rabbit vs rabbit interaction.
+ * 
+ * When a rabbit is near another rabbit, a new rabbit is created with a probability.
+ * 
+ * @param rabbit a rabbit
+ * @return true if there is a new rabbit, false else
+ * 
+ */
+bool Rabbit::reproduce(Rabbit &rabbit)
+{
+    float d = distance(rabbit.getPosition(), this->getPosition());
+    return (d <= this->getRadius() && RAND_DISTRIBUTION(RANDOM_ENGINE) <= RABBIT_REPRODUCTION_PROBABILITY);
 }
