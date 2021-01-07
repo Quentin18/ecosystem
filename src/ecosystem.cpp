@@ -138,6 +138,14 @@ void Ecosystem::redraw()
     window.display();
 }
 
+void Ecosystem::restart()
+{
+    initAnimals(NB_RABBITS_START, NB_FOXES_START);
+    initFoods(NB_FOODS);
+    plot.reset();
+    finished = false;
+}
+
 void Ecosystem::run()
 {
     window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
@@ -186,9 +194,7 @@ void Ecosystem::run()
                         case sf::Keyboard::Enter:
                             if (finished)
                             {
-                                initAnimals(NB_RABBITS_START, NB_FOXES_START);
-                                initFoods(NB_FOODS);
-                                finished = false;
+                                restart();
                             }
                             break;
                     }

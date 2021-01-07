@@ -38,6 +38,7 @@ private:
     void drawAnimals();
     void drawFoods();
     void redraw();
+    void restart();
     Plot plot;
 public:
     Ecosystem();
