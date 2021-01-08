@@ -130,7 +130,7 @@ void Ecosystem::updateRabbits()
             // Reproduce
             for (std::list<Rabbit>::iterator it2 = it; it2 != rabbits.end(); ++it2)
             {
-                if ((it2 != it) && it->reproduce(*it2))
+                if ((it2 != it) && (*it + *it2))
                 {
                     nbNewRabbits++;
                     break;

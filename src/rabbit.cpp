@@ -59,8 +59,22 @@ int Rabbit::eat(std::list<Food> &foods)
  * @return true if there is a new rabbit, false else
  * 
  */
-bool Rabbit::reproduce(Rabbit &rabbit)
+bool Rabbit::reproduce(Rabbit &rabbit) const
 {
     float d = distance(rabbit.getPosition(), this->getPosition());
     return (d <= this->getRadius() && RAND_DISTRIBUTION(RANDOM_ENGINE) <= RABBIT_REPRODUCTION_PROBABILITY);
+}
+
+/**
+ * Operator + between two rabbits.
+ * 
+ * Returns true if there is a reproduction between the two rabbits.
+ * 
+ * @param rabbit a rabbit
+ * @return true if there is a new rabbit, false else
+ * 
+ */
+bool Rabbit::operator+(Rabbit &rabbit) const
+{
+    return this->reproduce(rabbit);
 }
