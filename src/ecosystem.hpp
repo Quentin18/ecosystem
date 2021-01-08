@@ -7,10 +7,10 @@
 #include <list>
 #include <SFML/Graphics.hpp>
 
-#include "food.hpp"
 #include "rabbit.hpp"
 #include "fox.hpp"
 #include "animals.hpp"
+#include "foods.hpp"
 #include "plot.hpp"
 
 /**
@@ -24,9 +24,9 @@ private:
     sf::Text statsText;
     sf::Text commandsText;
     sf::Clock clock;
-    std::list<Food> foods;
     Animals<Rabbit> rabbits;
     Animals<Fox> foxes;
+    Foods foods;
     Plot plot;
     float timer;
     float timeSpeed;
@@ -35,11 +35,9 @@ private:
     bool showStats;
     bool showPlot;
     void initText();
-    void initFoods(const unsigned int nbFoods);
     void update();
     void drawStats();
     void drawCommands();
-    void drawFoods();
     void drawPlot();
     void redraw();
     void restart();

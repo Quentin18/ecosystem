@@ -33,20 +33,6 @@ void Ecosystem::initText()
 }
 
 /**
- * Init foods
- * 
- * @param nbFoods number of foods
- */
-void Ecosystem::initFoods(const unsigned int nbFoods)
-{
-    foods.clear();
-    for (unsigned int i = 0; i < nbFoods; i++)
-    {
-        foods.emplace_back();
-    }
-}
-
-/**
  * Ecosystem constructor
  */
 Ecosystem::Ecosystem() :
@@ -60,6 +46,7 @@ Ecosystem::Ecosystem() :
     initText();
     rabbits.init(NB_RABBITS_START);
     foxes.init(NB_FOXES_START);
+    foods.init(NB_FOODS);
 }
 
 /**
@@ -73,7 +60,7 @@ Ecosystem::~Ecosystem() {}
 void Ecosystem::update()
 {
     // Update animals
-    rabbits.update(foods, timeSpeed);
+    rabbits.update(*foods.getList(), timeSpeed);
     foxes.update(*rabbits.getList(), timeSpeed);
     // Update timer
     timer += clock.getElapsedTime().asSeconds() * timeSpeed;
@@ -119,17 +106,6 @@ void Ecosystem::drawCommands()
 }
 
 /**
- * Draw foods
- */
-void Ecosystem::drawFoods()
-{
-    for (std::list<Food>::iterator it = foods.begin(); it != foods.end(); ++it)
-    {
-        window.draw(*it);
-    }
-}
-
-/**
  * Draw the scatter plot
  */
 void Ecosystem::drawPlot()
@@ -152,7 +128,7 @@ void Ecosystem::redraw()
     {
         window.draw(rabbits);
         window.draw(foxes);
-        drawFoods();
+        window.draw(foods);
     }
     if (showPlot)
     {
@@ -171,10 +147,9 @@ void Ecosystem::redraw()
  */
 void Ecosystem::restart()
 {
-    // initAnimals(NB_RABBITS_START, NB_FOXES_START);
     rabbits.init(NB_RABBITS_START);
     foxes.init(NB_FOXES_START);
-    initFoods(NB_FOODS);
+    foods.init(NB_FOODS);
     plot.reset();
     finished = false;
     showPlot = false;
