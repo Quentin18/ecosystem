@@ -59,8 +59,22 @@ int Fox::eat(std::list<Rabbit> &rabbits)
  * @return true if there is a new fox, false else
  * 
  */
-bool Fox::reproduce(Fox &fox)
+bool Fox::reproduce(Fox &fox) const
 {
     float d = distance(fox.getPosition(), this->getPosition());
     return (d <= this->getRadius() && RAND_DISTRIBUTION(RANDOM_ENGINE) <= FOX_REPRODUCTION_PROBABILITY);
+}
+
+/**
+ * Operator + between two foxes.
+ * 
+ * Returns true if there is a reproduction between the two foxes.
+ * 
+ * @param fox a fox
+ * @return true if there is a new fox, false else
+ * 
+ */
+bool Fox::operator+(Fox &fox) const
+{
+    return this->reproduce(fox);
 }

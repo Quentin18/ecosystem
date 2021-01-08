@@ -164,7 +164,7 @@ void Ecosystem::updateFoxes()
             // Reproduce
             for (std::list<Fox>::iterator it2 = it; it2 != foxes.end(); ++it2)
             {
-                if ((it2 != it) && it->reproduce(*it2))
+                if ((it2 != it) && (*it + *it2))
                 {
                     nbNewFoxes++;
                     break;

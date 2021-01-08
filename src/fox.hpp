@@ -18,5 +18,6 @@ public:
     Fox();
     ~Fox();
     int eat(std::list<Rabbit> &rabbits);
-    bool reproduce(Fox &fox);
+    bool reproduce(Fox &fox) const;
+    bool operator+(Fox &fox) const;
 };
