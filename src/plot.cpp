@@ -102,3 +102,16 @@ void Plot::reset()
     rabbitsVect.clear();
     foxesVect.clear();
 }
+
+/**
+ * Draw the scatter plot to the target
+ */
+void Plot::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+    sf::Texture texture;
+    sf::Sprite sprite;
+    texture.loadFromFile(PLOT_FILENAME);
+    sprite.setTexture(texture);
+    sprite.setPosition(PLOT_POS);
+    target.draw(sprite);
+}

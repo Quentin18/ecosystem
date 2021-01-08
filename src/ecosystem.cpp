@@ -106,19 +106,6 @@ void Ecosystem::drawCommands()
 }
 
 /**
- * Draw the scatter plot
- */
-void Ecosystem::drawPlot()
-{
-    sf::Texture texture;
-    sf::Sprite sprite;
-    texture.loadFromFile(PLOT_FILENAME);
-    sprite.setTexture(texture);
-    sprite.setPosition(PLOT_POS);
-    window.draw(sprite);
-}
-
-/**
  * Redraw the window
  */
 void Ecosystem::redraw()
@@ -132,7 +119,7 @@ void Ecosystem::redraw()
     }
     if (showPlot)
     {
-        drawPlot();
+        window.draw(plot);
     }
     if (showStats)
     {

@@ -38,7 +38,6 @@ private:
     void update();
     void drawStats();
     void drawCommands();
-    void drawPlot();
     void redraw();
     void restart();
 public:

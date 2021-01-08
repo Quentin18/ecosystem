@@ -4,13 +4,15 @@
  */
 #pragma once
 
+#include <SFML/Graphics.hpp>
+
 #include "pbPlots/pbPlots.hpp"
 #include "pbPlots/supportLib.hpp"
 
 /**
  * Manage plots using the pbPlots library
  */
-class Plot
+class Plot : public sf::Drawable
 {
 private:
     RGBABitmapImageReference *imageReference;
@@ -24,6 +26,7 @@ private:
     void initRabbitsSeries();
     void initFoxesSeries();
     void initSettings();
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 public:
     Plot();
     ~Plot();
