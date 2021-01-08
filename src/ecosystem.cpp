@@ -10,32 +10,6 @@
 #include "constants.hpp"
 
 /**
- * Add rabbits to the list
- * 
- * @param nbRabbits number of rabbits
- */
-void Ecosystem::addRabbits(const unsigned int nbRabbits)
-{
-    for (unsigned int i = 0; i < nbRabbits; i++)
-    {
-        rabbits.emplace_back();
-    }
-}
-
-/**
- * Add foxes to the list
- * 
- * @param nbFoxes number of foxes
- */
-void Ecosystem::addFoxes(const unsigned int nbFoxes)
-{
-    for (unsigned int i = 0; i < nbFoxes; i++)
-    {
-        foxes.emplace_back();
-    }
-}
-
-/**
  * Init Text objects
  */
 void Ecosystem::initText()
@@ -59,20 +33,6 @@ void Ecosystem::initText()
 }
 
 /**
- * Init animals
- * 
- * @param nbRabbits number of rabbits
- * @param nbFoxes number of foxes
- */
-void Ecosystem::initAnimals(const unsigned int nbRabbits, const unsigned int nbFoxes)
-{
-    rabbits.clear();
-    foxes.clear();
-    addRabbits(nbRabbits);
-    addFoxes(nbFoxes);
-}
-
-/**
  * Init foods
  * 
  * @param nbFoods number of foods
@@ -92,16 +52,14 @@ void Ecosystem::initFoods(const unsigned int nbFoods)
 Ecosystem::Ecosystem() :
     timer(0.0f),
     timeSpeed(1.0f),
-    nbFoodsEaten(0),
-    nbRabbitsKilled(0),
-    nbRabbitsBirths(0),
-    nbFoxesBirths(0),
     paused(false),
     finished(true),
     showStats(true),
     showPlot(false)
 {
     initText();
+    rabbits.init(NB_RABBITS_START);
+    foxes.init(NB_FOXES_START);
 }
 
 /**
@@ -110,85 +68,17 @@ Ecosystem::Ecosystem() :
 Ecosystem::~Ecosystem() {}
 
 /**
- * Update the rabbits
- */
-void Ecosystem::updateRabbits()
-{
-    unsigned int nbNewRabbits = 0;
-    for (std::list<Rabbit>::iterator it = rabbits.begin(); it != rabbits.end(); ++it)
-    {
-        // Move
-        it->move(timeSpeed);
-        // Eat
-        nbFoodsEaten += it->eat(foods);
-        if (it->isDead())
-        {
-            // Remove rabbit
-            it = rabbits.erase(it);
-        }
-        else {
-            // Reproduce
-            for (std::list<Rabbit>::iterator it2 = it; it2 != rabbits.end(); ++it2)
-            {
-                if ((it2 != it) && (*it + *it2))
-                {
-                    nbNewRabbits++;
-                    break;
-                }
-            }
-        }
-    }
-    nbRabbitsBirths += nbNewRabbits;
-    // Create new rabbits
-    addRabbits(nbNewRabbits);
-}
-
-/**
- * Update the foxes
- */
-void Ecosystem::updateFoxes()
-{
-    unsigned int nbNewFoxes = 0;
-    for (std::list<Fox>::iterator it = foxes.begin(); it != foxes.end(); ++it)
-    {
-        // Move
-        it->move(timeSpeed);
-        // Eat
-        nbRabbitsKilled += it->eat(rabbits);
-        if (it->isDead())
-        {
-            // Remove fox
-            it = foxes.erase(it);
-        }
-        else {
-            // Reproduce
-            for (std::list<Fox>::iterator it2 = it; it2 != foxes.end(); ++it2)
-            {
-                if ((it2 != it) && (*it + *it2))
-                {
-                    nbNewFoxes++;
-                    break;
-                }
-            }
-        }
-    }
-    nbFoxesBirths += nbNewFoxes;
-    // Create new foxes
-    addFoxes(nbNewFoxes);
-}
-
-/**
  * Update the ecosystem
  */
 void Ecosystem::update()
 {
     // Update animals
-    updateRabbits();
-    updateFoxes();
+    rabbits.update(foods, timeSpeed);
+    foxes.update(*rabbits.getList(), timeSpeed);
     // Update timer
     timer += clock.getElapsedTime().asSeconds() * timeSpeed;
     // Update plot
-    plot.update(timer, rabbits.size(), foxes.size());
+    plot.update(timer, rabbits.getNb(), foxes.getNb());
 }
 
 /**
@@ -199,12 +89,12 @@ void Ecosystem::drawStats()
     std::stringstream ss;
     ss << "Time: " << timer << "\n"
         << "Speed: x" << timeSpeed << "\n"
-        << "Rabbits: " << rabbits.size() << "\n"
-        << "Foxes: " << foxes.size() << "\n"
-        << "Foods eaten: " << nbFoodsEaten << "\n"
-        << "Rabbits killed: " << nbRabbitsKilled << "\n"
-        << "Rabbits born: " << nbRabbitsBirths << "\n"
-        << "Foxes born: " << nbFoxesBirths << "\n";
+        << "Rabbits: " << rabbits.getNb() << "\n"
+        << "Foxes: " << foxes.getNb() << "\n"
+        << "Foods eaten: " << rabbits.getNbEaten() << "\n"
+        << "Rabbits killed: " << foxes.getNbEaten() << "\n"
+        << "Rabbits born: " << rabbits.getNbBirths() << "\n"
+        << "Foxes born: " << foxes.getNbBirths() << "\n";
     if (paused)
     {
         ss << "Paused";
@@ -226,23 +116,6 @@ void Ecosystem::drawCommands()
         << "S: show/hide stats\n";
     commandsText.setString(ss.str());
     window.draw(commandsText);
-}
-
-/**
- * Draw animals
- */
-void Ecosystem::drawAnimals()
-{
-    // Draw rabbits
-    for (std::list<Rabbit>::iterator it = rabbits.begin(); it != rabbits.end(); ++it)
-    {
-        window.draw(*it);
-    }
-    // Draw foxes
-    for (std::list<Fox>::iterator it = foxes.begin(); it != foxes.end(); ++it)
-    {
-        window.draw(*it);
-    }
 }
 
 /**
@@ -277,7 +150,8 @@ void Ecosystem::redraw()
     window.clear(BG_COLOR);
     if (!finished)
     {
-        drawAnimals();
+        window.draw(rabbits);
+        window.draw(foxes);
         drawFoods();
     }
     if (showPlot)
@@ -297,15 +171,13 @@ void Ecosystem::redraw()
  */
 void Ecosystem::restart()
 {
-    initAnimals(NB_RABBITS_START, NB_FOXES_START);
+    // initAnimals(NB_RABBITS_START, NB_FOXES_START);
+    rabbits.init(NB_RABBITS_START);
+    foxes.init(NB_FOXES_START);
     initFoods(NB_FOODS);
     plot.reset();
     finished = false;
     showPlot = false;
-    nbFoodsEaten = 0;
-    nbRabbitsKilled = 0;
-    nbRabbitsBirths = 0;
-    nbFoxesBirths = 0;
 }
 
 /**
