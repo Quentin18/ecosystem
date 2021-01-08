@@ -9,6 +9,7 @@
 #include "rabbit.hpp"
 #include "foods.hpp"
 #include "distributions.hpp"
+#include "perlin.hpp"
 
 TEST_CASE("1: Tests on Animals")
 {
@@ -39,4 +40,12 @@ TEST_CASE("3: Random distribution")
     }
 }
 
-// TODO to complete
+TEST_CASE("4: Perlin Noise")
+{
+    float n;
+    for (size_t i = 0; i < 100; i++)
+    {
+        n = Perlin::noise(i);
+        REQUIRE((n >= -1 && n <= 1));
+    }
+}
