@@ -20,13 +20,7 @@ private:
     unsigned int nbEaten;
     unsigned int nbBirths;
     void add(const unsigned int nbAnimals);
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
-    {
-        for (auto it = animals.begin(); it != animals.end(); ++it)
-        {
-            target.draw(*it);
-        }
-    }
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 public:
     Animals();
     ~Animals();
@@ -173,4 +167,16 @@ void Animals<T>::init(const unsigned int nbAnimals)
     add(nbAnimals);
     nbEaten = 0;
     nbBirths = 0;
+}
+
+/**
+ * Draw animals to the target
+ */
+template<typename T>
+void Animals<T>::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+    for (auto it = animals.begin(); it != animals.end(); ++it)
+    {
+        target.draw(*it);
+    }
 }
