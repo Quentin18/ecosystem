@@ -86,6 +86,10 @@ Celui-ci est généré grâce à [pbPlots](https://github.com/InductiveComputerS
 - [x] Pouvoir faire pause, accélérer, ralentir la simulation
 - [x] Pouvoir générer un graphe de la simulation avec le nombre d'animaux en fonction du temps
 
+## UML
+
+![UML](uml/uml.svg)
+
 ## Références
 
 - [The Nature of Code - Daniel Schiffman](https://natureofcode.com/book/chapter-9-the-evolution-of-code/#913-ecosystem-simulation)
