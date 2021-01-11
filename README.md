@@ -36,16 +36,18 @@ Voici les commandes de l'application :
 
 ## Fonctionnement
 
-- Les animaux sont représentés par des cercles. Au début de la simulation, des lapins et des renards sont placés aléatoirement sur la fenêtre. Les animaux débutent avec `1000` points de vie.
+- Les animaux sont représentés par des cercles. Les lapins correspondent aux cercles gris et les renards aux cercles oranges. Au début de la simulation, les animaux sont placés aléatoirement sur la fenêtre. Ils débutent avec `1000` points de vie.
 
 - De plus, une certaine quantité de nourriture est répartie sur la fenêtre. La nourriture est aussi représentée par un cercle.
 
-- À chaque regénération de la fenêtre (voir *framerate*), les animaux se déplacent pseudo-aléatoirement en utilisant le *Perlin noise*. Leurs points de vie diminuent d'un point de vie par déplacement. Voici les interactions entre les entités :
+- À chaque régénération de la fenêtre (voir *framerate*), les animaux se déplacent pseudo-aléatoirement en utilisant le bruit de Perlin (*Perlin noise*). Leurs points de vie diminuent d'un point par déplacement.
 
-    * **Quand un lapin rencontre de la nourriture**, le lapin mange la nourriture. La nourriture est regénérée à un autre endroit de la fenêtre et le lapin régénère ses points de vie à la valeur de départ.
+- Deux entités interagissent entre elles lorsque les cercles qui les représentent se superposent. Voici les interactions entre les entités :
+
+    * **Quand un lapin rencontre de la nourriture**, le lapin mange la nourriture. La nourriture est régénérée à un autre endroit de la fenêtre et le lapin régénère ses points de vie à la valeur de départ.
     * **Quand un renard rencontre un lapin**, le renard mange le lapin. Le renard régénère ses points de vie, et le lapin disparaît.
-    * **Quand un lapin rencontre un autre lapin**, un nouveau lapin naît avec une certaine probabilité (définie à `0.5`).
-    * **Quand un renard rencontre un autre renard**, un nouveau renard naît avec une certaine probabilité (définie à `0.5`).
+    * **Quand un lapin rencontre un autre lapin**, un nouveau lapin naît avec une certaine probabilité (définie à `0.3`).
+    * **Quand un renard rencontre un autre renard**, un nouveau renard naît avec une certaine probabilité (définie à `0.3`).
     * **Quand un animal n'a plus de points de vie**, il meurt et disparaît de la fenêtre.
 
 ## Personnalisation
