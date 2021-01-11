@@ -6,7 +6,7 @@ SRC=$(wildcard $(SRC_DIR)/pbPlots/*.cpp) $(wildcard $(SRC_DIR)/*.cpp)
 OBJ= $(SRC:.cpp=.o)
 TST= $(wildcard *.cpp)
 OBJ_TEST = $(filter-out $(SRC_DIR)/main.o, $(OBJ)) $(TST:.cpp=.o)
-EXEC=testcase
+EXEC=testcase.out
 
 all: $(EXEC)
 
