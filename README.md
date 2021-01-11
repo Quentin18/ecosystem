@@ -1,4 +1,4 @@
-# Écosystème
+# Simulation d'un écosystème en C++
 
 Ce projet est une simulation en C++ d'un écosystème basique, où des lapins et des renards évoluent.
 
@@ -17,14 +17,16 @@ Pour créer l'exécutable, il suffit d'entrer la commande `make`.
 
 ## Lancement
 
-Sur Linux, il faut lancer l'exécutable `ecosystem.out`.
+Il suffit de lancer l'exécutable `ecosystem.out` créé par la commande `make` :
 ```bash
 ./ecosystem.out
 ```
 
-Pour lancer la simulation, pressez la touche `Enter`.
+La fenêtre du simulateur doit apparaître. Pour lancer la simulation, pressez la touche `Enter`.
 
 ## Commandes
+
+Voici les commandes de l'application :
 
 - `Enter` : démarrer la simulation
 - `Space` : mettre la simulation sur pause
