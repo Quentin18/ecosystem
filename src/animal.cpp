@@ -54,6 +54,7 @@ Animal::~Animal() {}
  * Move the animal using Perlin noise
  * 
  * @param timeSpeed speed of the simulation
+ * 
  */
 void Animal::move(const float timeSpeed)
 {
@@ -69,6 +70,7 @@ void Animal::move(const float timeSpeed)
  * Return true if the animal is dead
  * 
  * @return true if the animal has no health points
+ * 
  */
 bool Animal::isDead() const
 {
@@ -89,6 +91,7 @@ void Animal::resetHp()
  * @param a vector representing the first point
  * @param b vector representing the second point
  * @return Euclidean distance between the two points
+ * 
  */
 float Animal::distance(const sf::Vector2f a, const sf::Vector2f b)
 {

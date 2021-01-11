@@ -9,6 +9,9 @@
 
 #include "food.hpp"
 
+/**
+ * Represent a group of foods
+ */
 class Foods : public sf::Drawable
 {
 private:

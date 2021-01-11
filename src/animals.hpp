@@ -50,7 +50,6 @@ void Animals<T>::add(const unsigned int nbAnimals)
 
 /**
  * Animals constructor
- * 
  */
 template<typename T>
 Animals<T>::Animals() : nbEaten(0), nbBirths(0) {}
