@@ -11,9 +11,19 @@ EXEC=ecosystem.out
 
 all: $(EXEC)
 
+# Tests
 testcase:
 	cd $(TST_DIR) ; make
 
+# Docs
+docs:
+	doxygen Doxyfile
+	xdg-open docs/html/index.html
+
+cleandocs:
+	rm -r docs
+
+# Exec
 $(EXEC): $(OBJ)
 	$(CC) $^ $(LIBFLAGS) -o $@
 
