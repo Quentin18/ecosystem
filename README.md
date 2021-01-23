@@ -88,7 +88,7 @@ Celui-ci est généré grâce à [pbPlots](https://github.com/InductiveComputerS
 
 ## UML
 
-![UML](uml/uml.svg)
+![UML](uml/uml.png)
 
 ## Références
 
