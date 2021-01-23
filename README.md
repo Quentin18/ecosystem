@@ -2,7 +2,7 @@
 
 Ce projet est une simulation en C++ d'un écosystème basique, où des lapins et des renards évoluent.
 
-![Simulation](img/simulation.png)
+![Simulation](img/simulation.gif)
 
 ## Installation
 
