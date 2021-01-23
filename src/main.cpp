@@ -4,6 +4,9 @@
  */
 #include "ecosystem.hpp"
 
+/**
+ * Main function
+ */
 int main()
 {
     Ecosystem().run();

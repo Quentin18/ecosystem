@@ -26,7 +26,7 @@ Rabbit::~Rabbit() {}
  * When a rabbit is near a food, the rabbit eats the food.
  * The rabbit gets health points, the food disappears.
  * 
- * @param food list of foods
+ * @param foods list of foods
  * @return int 1 if a food is eaten, 0 else
  * 
  */
