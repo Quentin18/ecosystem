@@ -90,6 +90,17 @@ Celui-ci est généré grâce à [pbPlots](https://github.com/InductiveComputerS
 
 ![UML](uml/uml.png)
 
+## Documentation
+
+La documentation du projet peut être générée automatiquement grâce à `Doxygen`. Entrez la commande suivante :
+```bash
+make docs
+```
+La documentation s'ouvre automatiquement sur votre navigateur par défaut. Pour nettoyer les fichiers de documentation, entrez :
+```bash
+make cleandocs
+```
+
 ## Références
 
 - [The Nature of Code - Daniel Schiffman](https://natureofcode.com/book/chapter-9-the-evolution-of-code/#913-ecosystem-simulation)
